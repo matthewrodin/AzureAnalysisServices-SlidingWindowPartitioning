@@ -1,3 +1,3 @@
 # Welcome to StackEdit!
 
-![Alt text](/Pictures/aas1.png)
+![](/Pictures/aas1.png =250x)
