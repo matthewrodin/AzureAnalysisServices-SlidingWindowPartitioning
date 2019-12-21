@@ -1,3 +1,4 @@
 # Welcome to StackEdit!
 
-![](./Pictures/aas1.png){ width=25% height=25% }
+<img src="./Pictures/aas1.png" width="200">
+
