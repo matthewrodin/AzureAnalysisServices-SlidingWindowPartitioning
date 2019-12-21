@@ -1,16 +1,20 @@
 ## Merge last 2 partitions ##
-$NumMonths = 7
-$server = "asazure://canadacentral.asazure.windows.net/acaasdemo"
-$db = "TabularProject11"
+$aasserver = <Azure Analysis Services Server Name>
+$sqldwserver = <Azure SQL Data Warehouse Server Name>
+$sqldw = <Azure SQL Data Warehouse Name>
+$model = <Azure Analysis Services Model Name>
+$NumMonths = <Number of Months>
+$_Credential = Get-AutomationPSCredential -Name "ServicePrincipal"
+$datasource = "AzureSqlDW " + $sqldwserver + " " + $sqldw 
 $ProcessDate= (Get-Date)
 $ProcessDate = $ProcessDate.AddMonths(1)
-$_Credential = Get-AutomationPSCredential -Name "NewCredential"
+
 $MergePartitions = @"
 {
   "mergePartitions": {
     "target": {
-      "database": "TabularProject11",
-      "table": "FactInternetSales_",
+      "database": "$model",
+      "table": "FactSales",
       "partition": "More than $NumMonths Months Old"
     },
     "sources": [
@@ -19,7 +23,7 @@ $MergePartitions = @"
   }
 }
 "@
-Invoke-ASCmd -Server $server -Database:$db -Query:$MergePartitions -ServicePrincipal -Credential $_credential	
+Invoke-ASCmd -Server $aasserver -Database:$model -Query:$MergePartitions -ServicePrincipal -Credential $_credential	
 
 ## Update Query on Merged Partititon ##
 $LastMonth = $ProcessDate.AddMonths(-$NumMonths).Year.ToString() + $ProcessDate.AddMonths(-$NumMonths).Month.ToString("00")+"01"
@@ -28,25 +32,25 @@ $AlterPartitions =
 {   
   "alter": {   
     "object": {   
-      "database": "TabularProject11",   
-      "table": "FactInternetSales_",   
-      "partition": "More than 7 Months Old"   
+      "database": "$model",   
+      "table": "FactInternetSales",   
+      "partition": "More than $NumMonths Months Old"   
     },
     "partition": {   
-      "name": "More than 7 Months Old",   
+      "name": "More than $NumMonths Months Old",   
      					"source": {
 						"query": [
-							"SELECT [dbo].[FactInternetSales_].* FROM [dbo].[FactInternetSales_] ",
-							"WHERE [dbo].[FactInternetSales_].[OrderDateKey] < '$LastMonth'"
+							"SELECT [dbo].[FactSales].* FROM [dbo].[FactSales] ",
+							"WHERE [dbo].[FactSales].[OrderDateKey] < '$LastMonth'"
 						],
-						"dataSource": "AzureSqlDW acaasdemo.database.windows.net ACAASDemo"
+						"dataSource": "$datasource"
 					}    
     }   
   }   
 }  
 "@
 	
-		Invoke-ASCmd -Server $server -Database:$db -Query:$AlterPartitions -ServicePrincipal -Credential $_credential	
+		Invoke-ASCmd -Server $aasserver -Database:$model -Query:$AlterPartitions -ServicePrincipal -Credential $_credential	
 
 
 
@@ -60,71 +64,67 @@ while($PartitionToBeChecked  -ne "1 Months Old") {
     $PartitionToBeChecked = "$j"+ " Months Old"
 	
 		$LastMonth=$ProcessDate.AddMonths(-2-$i).Year.ToString() + $ProcessDate.AddMonths(-2-$i).Month.ToString("00")+"01"
-		$ProcessDate.AddMonths(-2-$i).Year.ToString() + $ProcessDate.AddMonths(-2-$i).Month.ToString("00")+"01"
 		$ThisMonth=$ProcessDate.AddMonths(-1-$i).Year.ToString() + $ProcessDate.AddMonths(-1-$i).Month.ToString("00")+"01"
-		$ProcessDate.AddMonths(-1-$i).Year.ToString() + $ProcessDate.AddMonths(-1-$i).Month.ToString("00")+"01"
 		$k = $j + 1   
 		$AlterPartitions_2 = 
 @" 
 {   
   "alter": {   
     "object": {   
-      "database": "TabularProject11",   
-      "table": "FactInternetSales_",   
+      "database": "model",   
+      "table": "FactSales",   
       "partition": "$j Months Old"   
     },
     "partition": {   
       "name": "$k Months Old",   
      					"source": {
 						"query": [
-							"SELECT [dbo].[FactInternetSales_].* FROM [dbo].[FactInternetSales_] ",
-							"WHERE [dbo].[FactInternetSales_].[OrderDateKey] >= '$LastMonth' AND [dbo].[FactInternetSales_].[OrderDateKey] < '$ThisMonth'"
+							"SELECT [dbo].[FactSales].* FROM [dbo].[FactSales] ",
+							"WHERE [dbo].[FactSales].[OrderDateKey] >= '$LastMonth' AND [dbo].[FactSales].[OrderDateKey] < '$ThisMonth'"
 						],
-						"dataSource": "AzureSqlDW acaasdemo.database.windows.net ACAASDemo"
+						"dataSource": "$datasource"
 					}    
     }   
   }   
 }  
 "@
 	
-		Invoke-ASCmd -Server $server -Database:$db -Query:$AlterPartitions_2 -ServicePrincipal -Credential $_credential	
+		Invoke-ASCmd -Server $aasserver -Database:$model -Query:$AlterPartitions_2 -ServicePrincipal -Credential $_credential	
 $i--
 $j--
 }
 
 ## Create new 1 Month Old Partition ##
-$LastMonth=$ProcessDate.AddMonths(0).Year.ToString() + $ProcessDate.AddMonths(0).Month.ToString("00")+"01"
-$ThisMonth=$ProcessDate.AddMonths(1).Year.ToString() + $ProcessDate.AddMonths(1).Month.ToString("00")+"01"
-$ProcessDate.AddMonths(0).Year.ToString() + $ProcessDate.AddMonths(0).Month.ToString("00")+"01"
-$ProcessDate.AddMonths(1).Year.ToString() + $ProcessDate.AddMonths(1).Month.ToString("00")+"01"
+$LastMonth=$ProcessDate.AddMonths(-1).Year.ToString() + $ProcessDate.AddMonths(-1).Month.ToString("00")+"01"
+$ThisMonth=$ProcessDate.AddMonths(0).Year.ToString() + $ProcessDate.AddMonths(0).Month.ToString("00")+"01"
 $CreatePartitions = 
 @" 
 	{
 		"create": {
 			"parentObject": {
-			"database": "TabularProject11",
-			"table": "FactInternetSales_"
+			"database": "$model",
+			"table": "FactSales"
 			},
 			"partition": {
 				"name": "1 Months Old",
 				"source": {
 					"query": [
-						"SELECT [dbo].[FactInternetSales_].* FROM [dbo].[FactInternetSales_] ",
-						"WHERE [dbo].[FactInternetSales_].[OrderDateKey] >= '$LastMonth' AND [dbo].[FactInternetSales_].[OrderDateKey] < '$ThisMonth'"
+						"SELECT [dbo].[FactSales].* FROM [dbo].[FactSales] ",
+						"WHERE [dbo].[FactSales].[OrderDateKey] >= '$LastMonth' AND [dbo].[FactSales].[OrderDateKey] < '$ThisMonth'"
 					],
-					"dataSource": "AzureSqlDW acaasdemo.database.windows.net ACAASDemo"
+					"dataSource": "$datasource"
 				}
 			}
 		}
 	} 
 "@	
-Invoke-ASCmd -Server $server -Database:$db -Query:$CreatePartitions -ServicePrincipal -Credential $_credential	
+Invoke-ASCmd -Server $aasserver -Database:$model -Query:$CreatePartitions -ServicePrincipal -Credential $_credential	
 
 ## Process Partitions ##
 $k = 1
 $PartitionToBeChecked = ""
 
-while($PartitionToBeChecked  -ne "7 Months Old") {
+while($PartitionToBeChecked  -ne "$NumMonths Months Old") {
 	
     $PartitionToBeChecked = "$k"+ " Months Old"	
 	$RefreshPartitions = 
@@ -134,8 +134,8 @@ while($PartitionToBeChecked  -ne "7 Months Old") {
 		"type": "full",
 		"objects": [
 		  {
-			"database": "TabularProject11",
-			"table": "FactInternetSales_",
+			"database": "$model",
+			"table": "FactSales",
 			"partition": "$k Months Old"
 		  }
 		]
@@ -143,7 +143,7 @@ while($PartitionToBeChecked  -ne "7 Months Old") {
 	}
 "@	
 
-	Invoke-ASCmd -Server $server -Database:$db -Query:$RefreshPartitions -ServicePrincipal -Credential $_credential		
+	Invoke-ASCmd -Server $aasserver -Database:$model -Query:$RefreshPartitions -ServicePrincipal -Credential $_credential		
 	$k++
 }
 
@@ -154,13 +154,13 @@ $RefreshPartitions_2 =
 		"type": "full",
 		"objects": [
 		  {
-			"database": "TabularProject11",
-			"table": "FactInternetSales_",
-			"partition": "More than 7 Months Old"
+			"database": "$model",
+			"table": "FactSales",
+			"partition": "More than $NumMonths Months Old"
 		  }
 		]
 	  }
 	}
 "@	
 
-Invoke-ASCmd -Server $server -Database:$db -Query:$RefreshPartitions_2 -ServicePrincipal -Credential $_credential	
+Invoke-ASCmd -Server $aasserver -Database:$model -Query:$RefreshPartitions_2 -ServicePrincipal -Credential $_credential	
