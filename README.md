@@ -1,6 +1,12 @@
-<style>
-.red {color: red}
+<style> .red {color: red}</style>
+<style> 
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+}
 </style>
+![DNCE’s Waving Pug](https://media.giphy.com/media/3oKIPsx2VAYAgEHC12/giphy.gif){.center}
 
 ###### Red text title {#identifier .red}
 
@@ -19,7 +25,7 @@
 <img src="./Pictures/aas1.png" width="400">
 
 3. On the top left, click “+ Add”
-![](./Pictures/aas2.png#thumbnail)
+![](./Pictures/aas2.png)
 
 	a.	Under “Subscription” -> Select existing Azure subscription
 
