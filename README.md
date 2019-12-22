@@ -22,6 +22,13 @@
 	c.	Under “Data Warehouse name” -> Enter a name for the data warehouse
 
 
+	a.	Copy the IP address provided in the error message
+
+	b.	Navigate to portal.azure.com
+
+	c.	In the search bar, type “sql server” and select “SQL servers”
+
+
 
 Deployment may take up to 20 minutes.
 
