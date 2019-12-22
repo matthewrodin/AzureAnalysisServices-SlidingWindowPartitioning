@@ -14,7 +14,7 @@
 
  3. On the top left, click “+ Add”
  <img src="./Pictures/aas2.png" width="400">
-
+ 
  		a. Under “Subscription” -> Select existing Azure subscription
 
  		b. Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
@@ -23,26 +23,26 @@
 
  		d. Under “Server" -> Click "Create New"
 
- 			i.	Under “Server Name” -> Enter a unique name for the server
+ 			i. Under “Server Name” -> Enter a unique name for the server
 
- 			ii.	Under “Server Admin Login” -> Create a username for the server
+ 			ii. Under “Server Admin Login” -> Create a username for the server
 
- 			iii.	Under “Password” -> Create a password for the server
+ 			iii. Under “Password” -> Create a password for the server
 
- 			iv.	Under “Location” -> Select “Canada Central”
+ 			iv. Under “Location” -> Select “Canada Central”
 
- 			v.	Tick “Allow Azure services to access server”
+ 			v. Tick “Allow Azure services to access server”
 
- 			vi.	Click “OK”
+ 			vi. Click “OK”
 
- 		e.	Under “Performance Level”, select “Select performance level”
+ 		e. Under “Performance Level”, select “Select performance level”
 
- 			i.	Click “Gen2”
+ 			i. Click “Gen2”
 
- 			ii.	Scale the data warehouse. For reference, the service levels range from DW100c to DW30000c. 
+ 			ii. Scale the data warehouse. For reference, the service levels range from DW100c to DW30000c. 
 
  			iii. Click “Apply”
- 		f.	On the bottom left, click the blue “Review + Create” button
- 		g.	On the bottom left, click the blue “Create” button
+ 		f. On the bottom left, click the blue “Review + Create” button
+ 		g. On the bottom left, click the blue “Create” button
 
 
