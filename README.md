@@ -23,17 +23,17 @@
 
 	d.	Under “Server” -> Click “Create New” 
 
-	i.	Under “Server Name” -> Enter a unique name for the server
+	 i.	Under “Server Name” -> Enter a unique name for the server
 
-	ii.	Under “Server Admin Login” -> Create a username for the server
+	 ii.	Under “Server Admin Login” -> Create a username for the server
 
-	iii.	Under “Password” -> Create a password for the server
+	 iii.	Under “Password” -> Create a password for the server
 
-	iv.	Under “Location” -> Select “Canada Central”
+	 iv.	Under “Location” -> Select “Canada Central”
 
-	v.	Tick “Allow Azure services to access server”
+	 v.	Tick “Allow Azure services to access server”
 
-	vi.	Click “OK”
+	 vi.	Click “OK”
 
 	e.	Under “Performance Level”, select “Select performance level”
 
