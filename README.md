@@ -17,12 +17,13 @@
 <img src="./Pictures/aas2.png" width="400">
 
 </br>
+
     a. Under “Subscription” -> Select existing Azure subscription 
     
     b. Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
-
+    
     c. Under “Data Warehouse name” -> Enter a name for the data warehouse
-
+    
     d. Under “Server” -> Click “Create New” 
     
         i. Under “Server Name” -> Enter a unique name for the server
