@@ -21,7 +21,31 @@
 
 	c.	Under “Data Warehouse name” -> Enter a name for the data warehouse
 
+	d.	Under “Server” -> Click “Create New” 
 
+		i.	Under “Server Name” -> Enter a unique name for the server
+
+		ii.	Under “Server Admin Login” -> Create a username for the server
+
+		iii.	Under “Password” -> Create a password for the server
+
+		iv.	Under “Location” -> Select “Canada Central”
+
+		v.	Tick “Allow Azure services to access server”
+
+		vi.	Click “OK”
+
+	e.	Under “Performance Level”, select “Select performance level”
+
+		i.	Click “Gen2”
+
+		ii.	Scale the data warehouse. For reference, the service levels range from DW100c to DW30000c. 
+
+		iii.	Click “Apply”
+
+	f.	On the bottom left, click the blue “Review + Create” button
+
+	g.	On the bottom left, click the blue “Create” button
 
 
 Deployment may take up to 20 minutes.
@@ -38,6 +62,12 @@ Deployment may take up to 20 minutes.
 	b.	Navigate to portal.azure.com
 
 	c.	In the search bar, type “sql server” and select “SQL servers”
+	<img src="./Pictures/aas3.png" width="400">
+
+	d.	Select the server created in Task 2
+
+	e.	Select “Firewalls and virtual networks”
+
 
 
 
