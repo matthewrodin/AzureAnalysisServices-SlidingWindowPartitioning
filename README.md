@@ -1,3 +1,5 @@
+(setq markdown-css-paths '("./CSS/style.css"))
+
 ##  Task 1: Download Sample Data
 
 1. Navigate to: [Sample Data](https://github.com/matthewrodin/AzureAnalysisServices-SlidingWindowPartitioning/tree/master/Sample%20Data)
@@ -13,7 +15,7 @@
 <img src="./Pictures/aas1.png" width="400">
 
 3. On the top left, click “+ Add”
-![](./Pictures/aas2.png?thumbnail)
+![](./Pictures/aas2.png#thumbnail)
 
 	a.	Under “Subscription” -> Select existing Azure subscription
 
