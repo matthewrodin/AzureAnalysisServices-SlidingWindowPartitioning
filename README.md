@@ -10,15 +10,15 @@
 1. Navigate to: [Azure Portal](https://portal.azure.com/)
 
 2. In the search bar, type “sql” and select “SQL data warehouses
-<img src="./Pictures/aas1.png" width="400">
+<img src="./Pictures/aas1.png" width="400"> 
 
 3. On the top left, click “+ Add”
-<img src="./Pictures/aas2.png" width="400">
+<img src="./Pictures/aas2.png" width="400">  
 
 	a.	Under “Subscription” -> Select existing Azure subscription
 
 	b.	Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
-	
+
 	c.	Under “Data Warehouse name” -> Enter a name for the data warehouse
 
 
