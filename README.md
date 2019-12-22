@@ -14,7 +14,7 @@
 
  3. On the top left, click “+ Add”
  <img src="./Pictures/aas2.png" width="400">
- 
+
  		a. Under “Subscription” -> Select existing Azure subscription
 
  		b. Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
@@ -43,6 +43,16 @@
 
  			iii. Click “Apply”
  		f. On the bottom left, click the blue “Review + Create” button
+
  		g. On the bottom left, click the blue “Create” button
+
+Deployment may take up to 20 minutes.
+
+##  Task 3: Prepare SQL Data Warehouse for Data Ingestion
+1. Open command prompt
+2. Run the following command:
+`sqlcmd -S <servername> -d <databasename> -U <serverusername> -P <serverpassword> -I`
+
+
 
 
