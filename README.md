@@ -13,7 +13,9 @@
 <img src="./Pictures/aas1.png" width="400">
 
 3. On the top left, click “+ Add”
+<div style="width:150px; height:100px">
 ![](./Pictures/aas2.png)
+</div>
 
 	a.	Under “Subscription” -> Select existing Azure subscription
 
@@ -23,12 +25,17 @@
 
 	d.	Under “Server” -> Click “Create New” 
 
-		* Under “Server Name” -> Enter a unique name for the server
-		* Under “Server Admin Login” -> Create a username for the server
-		* Under “Password” -> Create a password for the server
-		* Under “Location” -> Select “Canada Central”
-		* Tick “Allow Azure services to access server”
-		* Click “OK”
+		i.	Under “Server Name” -> Enter a unique name for the server
+
+		ii.	Under “Server Admin Login” -> Create a username for the server
+
+		iii.	Under “Password” -> Create a password for the server
+
+		iv.	Under “Location” -> Select “Canada Central”
+
+		v.	Tick “Allow Azure services to access server”
+
+		vi.	Click “OK”
 
 	e.	Under “Performance Level”, select “Select performance level”
 
