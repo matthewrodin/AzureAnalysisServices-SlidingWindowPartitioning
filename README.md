@@ -1,13 +1,5 @@
-
-
-###### Red text title {#identifier .red}
-
 ##  Task 1: Download Sample Data
-<style>
-  body {
-    color: red;
-  }
-</style>
+
 
 1. Navigate to: [Sample Data](https://github.com/matthewrodin/AzureAnalysisServices-SlidingWindowPartitioning/tree/master/Sample%20Data)
 
@@ -21,22 +13,20 @@
 2. In the search bar, type “sql” and select “SQL data warehouses
 <img src="./Pictures/aas1.png" width="400">
 
-3. On the top left, click “+ Add”
-![](./Pictures/aas2.png)
+3. On the top left, click “+ Add”</br></br>
+<img src="./Pictures/aas2.png" width="400">
 
-	a.	Under “Subscription” -> Select existing Azure subscription
+    a. Under “Subscription” -> Select existing Azure subscription
 
-	b.	Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
+    b.	Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
 
-	c.	Under “Data Warehouse name” -> Enter a name for the data warehouse
+    c.	Under “Data Warehouse name” -> Enter a name for the data warehouse
 
-	d.	Under “Server” -> Click “Create New” 
+    d.	Under “Server” -> Click “Create New” 
 
-		i.	Under “Server Name” -> Enter a unique name for the server
-
-		ii.	Under “Server Admin Login” -> Create a username for the server
-
-		iii.	Under “Password” -> Create a password for the server
+        i. Under “Server Name” -> Enter a unique name for the server
+  ii.Under “Server Admin Login” -> Create a username for the server
+  iii.	Under “Password” -> Create a password for the server
 
 		iv.	Under “Location” -> Select “Canada Central”
 
