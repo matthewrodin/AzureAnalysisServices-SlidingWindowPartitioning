@@ -1,16 +1,13 @@
-<style> .red {color: red}</style>
-<style> 
-	.center {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-}
-</style>
-![DNCE’s Waving Pug](https://media.giphy.com/media/3oKIPsx2VAYAgEHC12/giphy.gif){.center}
+
 
 ###### Red text title {#identifier .red}
 
 ##  Task 1: Download Sample Data
+<style>
+  body {
+    color: red;
+  }
+</style>
 
 1. Navigate to: [Sample Data](https://github.com/matthewrodin/AzureAnalysisServices-SlidingWindowPartitioning/tree/master/Sample%20Data)
 
