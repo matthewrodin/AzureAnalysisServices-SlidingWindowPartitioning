@@ -13,9 +13,7 @@
 <img src="./Pictures/aas1.png" width="400">
 
 3. On the top left, click “+ Add”
-<div style="width:150px; height:100px">
-![](./Pictures/aas2.png)
-</div>
+![](./Pictures/aas2.png?thumbnail)
 
 	a.	Under “Subscription” -> Select existing Azure subscription
 
