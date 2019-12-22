@@ -1,4 +1,8 @@
-(setq markdown-css-paths '("./CSS/style.css"))
+<style>
+.red {color: red}
+</style>
+
+###### Red text title {#identifier .red}
 
 ##  Task 1: Download Sample Data
 
