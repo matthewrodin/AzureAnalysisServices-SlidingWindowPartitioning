@@ -42,6 +42,7 @@
  			ii. Scale the data warehouse. For reference, the service levels range from DW100c to DW30000c. 
 
  			iii. Click “Apply”
+
  		f. On the bottom left, click the blue “Review + Create” button
 
  		g. On the bottom left, click the blue “Create” button
@@ -52,6 +53,13 @@ Deployment may take up to 20 minutes.
 1. Open command prompt
 2. Run the following command:
 `sqlcmd -S <servername> -d <databasename> -U <serverusername> -P <serverpassword> -I`
+**Note:** You can find the <servername> in the “Overview” window of your SQL Data Warehouse resource in the Azure portal.
+3. If the following error is received: *“Sqlcmd: Error: Microsoft ODBC Driver 17 for SQL Server : Cannot open server…”*
+	a.	Copy the IP address provided in the error message
+
+	b.	Navigate to portal.azure.com
+	
+	c.	In the search bar, type “sql server” and select “SQL servers”
 
 
 
