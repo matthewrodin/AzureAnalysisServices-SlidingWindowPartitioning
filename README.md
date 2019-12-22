@@ -22,7 +22,6 @@
 	c.	In the search bar, type “sql server” and select “SQL servers”
 
 
-
 Deployment may take up to 20 minutes.
 
 ##  Task 3: Prepare SQL Data Warehouse for Data Ingestion
