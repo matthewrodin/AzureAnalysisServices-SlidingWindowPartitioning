@@ -19,6 +19,14 @@
 
 	b.	Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
 
+	c.	Under “Data Warehouse name” -> Enter a name for the data warehouse
+
+
+
+	a.	Under “Subscription” -> Select existing Azure subscription
+
+	b.	Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
+
 	c.	Under "Data Warehouse name" -> Enter a name for the data warehouse
 
 	d.	Under “Server" -> Click "Create New"
