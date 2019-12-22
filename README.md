@@ -15,11 +15,13 @@
 3. On the top left, click “+ Add”
 <img src="./Pictures/aas2.png" width="400">
 
-	a.	Copy the IP address provided in the error message
+	a.	Under “Subscription” -> Select existing Azure subscription
 
-	b.	Navigate to portal.azure.com
+	b.	Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
+	
+	c.	Under “Data Warehouse name” -> Enter a name for the data warehouse
 
-	c.	In the search bar, type “sql server” and select “SQL servers”
+
 
 
 Deployment may take up to 20 minutes.
