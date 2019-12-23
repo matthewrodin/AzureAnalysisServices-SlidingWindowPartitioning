@@ -1,3 +1,74 @@
+##  Introduction
+
+In this article, we will explore how to implement sliding window partitioning to an Azure Analysis Services tabular model to be analyzed in Power BI.
+
+</br>
+
+### What is sliding window partitioning?
+Essentially, the sliding window partitioning strategy involved maintaining a fixed number of partitions for a certain table based on a date field. When new data is consumed, a new partition is added to the table, while the oldest partition is merged with a large partition of historical data. 
+
+Since in most cases data is loaded incrementally on a daily basis, we would ideally only want to refresh the newest partition in order to save time and resources, with the idea that the data in the older partitions remains constant. 
+
+</br>
+
+### What is sliding window partitioning?
+* **Azure SQL Data Warehouse** (To store structured data)
+
+    * A data warehouse is designed to take data from multiple systems, prepare the data for a specific reporting purpose and house and structure the data, ready for querying
+    
+    * Designed for business intelligence and analytics
+    
+    * Data is first prepared and then stored in relation tables. This reduces storage costs, and improves query performance
+    
+    **Note:** Azure SQL Data Warehouse will soon be replaced by [Azure Synapse](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)
+
+* **Azure Blob Storage** (To store raw data files)
+    * Azure Blob storage is Microsoft's object storage solution for the cloud.
+    
+    * Blob storage is optimized for storing massive amounts of unstructured data.
+    
+    * Blob storage offers three types of resources:
+    </br><img src="./Pictures/aas0_1.png" width="300">
+ 
+* Azure Data Factory (To ingest data from raw file to Azure SQL Data Warehouse)
+
+    * A hybrid data integration service which makes connecting and moving data easy
+    
+    *Used for loading data in to Azure Data Lake or SQL Data Warehouse
+    
+    *Can schedule data copies from on-premises to the cloud\
+
+* SQL Server Management Studio (To connect to Azure SQL Data Warehouse and Azure Analysis Services)
+
+    * Integrated environment for managing any SQL infrastructure, from SQL Server to Azure SQL Database
+    
+    * Provides tools to configure, monitor, and administer instances of SQL Server and databases
+    
+    * Use SSMS to query, design, and manage your databases and data warehouses
+
+* Visual Studio (To create tabular model and deploy to Azure Analysis Services)
+
+    * It is an integrated development environment (IDE) which is a creative launching pad that you can use to edit, debug, and build code, and then publish an app
+    
+    * Includes compilers, code completion tools, graphical designers, and many more features to ease the software development process
+
+* Azure Analysis Services (To store our tabular model in the cloud)
+
+    * Fully managed platform as a service (PaaS) that provides enterprise-grade data models in the cloud. 
+    </br><img src="./Pictures/aas0_2.png" width="500">
+
+* Azure Automation (To automate PowerShell scripts that create new partitions on a monthly basis)
+
+    * A cloud-based automation and configuration service that provides consistent management across your Azure and non-Azure environments.
+    
+    * Consists of process automation, update management, and configuration feature
+
+* Power BI (To analyze and visualize data within the partitions of our tabular model)
+
+    * A business analytics solution that lets you visualize your data and share insights across your organization, or embed them in your app or website.
+
+</br>
+
 ##  Task 1: Download Sample Data
 
 
@@ -6,7 +77,7 @@
 2.  Download “SampleCustomerData.csv” and “SampleSalesData.csv” to a local machine
 </br>
 
-##  Task 2: Create Azure SQL Database
+##  Task 2: Create Azure SQL Data Warehouse
 
 1.  Navigate to: [Azure Portal](https://portal.azure.com/)
 
@@ -59,7 +130,7 @@ Deployment may take up to 20 minutes.
 
 2. Run the following command:
 `sqlcmd -S <servername> -d <databasename> -U <serverusername> -P <serverpassword> -I`
-**Note:** You can find the <servername> in the “Overview” window of your SQL Data Warehouse resource in the Azure portal.
+**Note:** The ServerName can be found in the “Overview” window of the SQL Data Warehouse resource in the Azure portal.
 3. If the following error is received: *“Sqlcmd: Error: Microsoft ODBC Driver 17 for SQL Server : Cannot open server…”*
     
 	a.	Copy the IP address provided in the error message
@@ -276,7 +347,7 @@ Deployment may take up to 20 minutes.
     
     g.	Under “File or folder” -> Click “Browse”
     
-    h.	Double click the container you created in Task 4
+    h.	Double click the container created in Task 4
     
     i.	Select “SampleCustomerData.csv”
     
@@ -472,7 +543,7 @@ the two tables created in Task 3 should appear.
 </br><img src="./Pictures/aas33.png" width="650">
 2.	Click and drag the “CustomerKey” column from the “DimCustomer” table onto the “CustomerKey” column of the “FactSales” table and release the mouse.
     
-    Now, a “1 to many” relationship should be formed between your tables:
+    Now, a “1 to many” relationship should be formed between the tables:
     </br><img src="./Pictures/aas34.png" width="400"> 
 
 </br>
@@ -576,7 +647,7 @@ The two tables created in Task 3 should now be visible.
 
     a.	Under “Name” -> Enter a name for the Automation Account
 
-    b.	Under “Subscription -> Select your Azure subscription
+    b.	Under “Subscription -> Select existing Azure subscription
 
     c.	Under “Resource Group -> Select the resource group created in Task 2
 
@@ -641,7 +712,7 @@ The two tables created in Task 3 should now be visible.
 8.	Under “Certificates & Secrets” -> Click “+ New Client Secret”
 </br><img src="./Pictures/aas51.png" width="550"> 
 
-    a.	Under “Description” -> Enter a name for your secret
+    a.	Under “Description” -> Enter a name for the secret
     
     b.	Under “Expires” -> Select “Never”
     
@@ -658,7 +729,7 @@ The two tables created in Task 3 should now be visible.
 2.	In the search bar, type “subscription” and select “Subscriptions”
 </br><img src="./Pictures/aas53.png" width="300"> 
 
-3.	Click on your existing Azure subscription
+3.	Click on the existing Azure subscription
 
 4.	Under “Access control (IAM)” -> Under “Add a role assignment” -> Click “Add”
 </br><img src="./Pictures/aas54.png" width="500"> 
@@ -683,7 +754,7 @@ The two tables created in Task 3 should now be visible.
 3.	Click “+ Add”
 </br><img src="./Pictures/aas55_1.png" width="200">
 
-    a.	Under “Subscription” -> Select your existing subscription
+    a.	Under “Subscription” -> Select existing subscription
 
     b.	Under “resource group” -> Select the resource created in Task 2
 
@@ -798,7 +869,7 @@ The two tables created in Task 3 should now be visible.
     
     </br>
     
-    d.	In line #4, replace 'Azure Analysis Services Model Name' with the name of your model/project created in Task 3, Part 1, Step 5. 
+    d.	In line #4, replace 'Azure Analysis Services Model Name' with the name of the model/project created in Task 3, Part 1, Step 5. 
     
     **Important:** Surround the model name with double quotations.
     
@@ -909,4 +980,15 @@ The partitions created by the script should be visible.
 
 On the right, the two tables should now be visible:
 </br><img src="./Pictures/aas70.png" width="150">
+
+</br>
+
+##  Resources
+
+* [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/en-us/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
+
+* [Invoke-ASCmd](https://docs.microsoft.com/en-us/powershell/module/sqlserver/invoke-ascmd?view=sqlserver-ps)
+
+* Inspired by: [Asanka @ ShareWhatIKnow](https://asankap.wordpress.com/2017/10/08/implementing-the-sliding-window-partitioning-strategy-for-microsoft-analysis-service-tabular-model/)
+
 
