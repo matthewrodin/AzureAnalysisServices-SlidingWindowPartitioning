@@ -1,9 +1,9 @@
 ## Merge last 2 partitions ##
-$aasserver = <Azure Analysis Services Server Name>
-$sqldwserver = <Azure SQL Data Warehouse Server Name>
-$sqldw = <Azure SQL Data Warehouse Name>
-$model = <Azure Analysis Services Model Name>
-$NumMonths = <Number of Months>
+$aasserver = 'Azure Analysis Services Server Name'
+$sqldwserver = 'Azure SQL Data Warehouse Server Name'
+$sqldw = 'Azure SQL Data Warehouse Name'
+$model = 'Azure Analysis Services Model Name'
+$NumMonths = 'Number of Months'
 $_Credential = Get-AutomationPSCredential -Name "ServicePrincipal"
 $datasource = "AzureSqlDW " + $sqldwserver + " " + $sqldw 
 $ProcessDate= (Get-Date)
