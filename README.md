@@ -14,8 +14,8 @@
 
 ![](./Pictures/aas1.png)
 
-3.  On the top left, click “+ Add”</br>
-![](./Pictures/aas2.png)
+3.  On the top left, click “+ Add”
+</br><img src="./Pictures/aas2.png" width="400">
 
     a.  Under “Subscription” -> Select existing Azure subscription 
     
