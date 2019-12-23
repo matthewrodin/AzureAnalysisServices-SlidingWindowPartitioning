@@ -188,9 +188,11 @@ Deployment may take up to 20 minutes.
 </br><img src="./Pictures/aas12.png" width="400">
 
 11.	Click the blue browse button and upload the local copies of “SampleCustomerData.csv” and “SampleSalesData.csv” to the container. 
+</br><img src="./Pictures/aas13.png" width="300">
 
 12.	Leave “Overwrite if files already exist” blank
-</br><img src="./Pictures/aas13.png" width="300">
+
+13.	Click "Upload"
 
 </br>
 
@@ -266,7 +268,7 @@ Deployment may take up to 20 minutes.
         
         iii. Under “Storage account name” -> Select the storage account created in Task 4
         
-        iv.  **Note:** Leave all other fields as the default
+        Note: Leave all other fields as the default
         
         v.   Click “Create”
         
@@ -313,7 +315,7 @@ Deployment may take up to 20 minutes.
         
         vii.  Under “Password -> Enter the username of the server created in Task 2
         
-        viii. **Note:** Leave all other fields as the default
+        Note: Leave all other fields as the default
         
         ix.   Click “Create”
         
@@ -370,7 +372,7 @@ Repeat Steps 1 to 13 of Task 6 for “SampleSalesData.csv”.
 
 </br>
 In the “Object Explorer” pane, under 
-
+</br>
 *ServerName.database.windows.net -> "Databases" -> SQLDataWarehouseName -> "Tables"*
 
 the two tables created in Task 3 should appear.
@@ -387,9 +389,7 @@ the two tables created in Task 3 should appear.
 
 ### Part 1: Create Visual Studio Project
 
-1.	Open **Microsoft Visual Studio**
-
-For more information about VS or to download, visit: [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019) 
+1.	Open **Microsoft Visual Studio**. For more information about VS or to download, visit: [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019) 
 
 2.	Click “Create a new project”
 </br><img src="./Pictures/aas26.png" width="250">
@@ -425,6 +425,7 @@ For more information about VS or to download, visit: [Visual Studio](https://doc
 
 9.	Click “Ok”
 </br>
+
 ### Part 2: Import Data in Visual Studio
 
 1.	Once the workspace is set up, select “Import from Data Source”
@@ -462,6 +463,7 @@ For more information about VS or to download, visit: [Visual Studio](https://doc
 
 16.	Click “Close”
 </br>
+
 ### Part 3: Create Model in Visual Studio
 
 1.	Click the “Diagram” button
@@ -525,8 +527,9 @@ For more information about VS or to download, visit: [Visual Studio](https://doc
 </br>
 Now, verify deployment in the following 2 manners:
 </br>
-1.	Through Azure portal
+</br>
 
+1.	Through Azure portal
     a.	Navigate to the Analysis Services resource in the Azure portal
     
     b.	Under “Models” -> Click “Manage”
@@ -546,7 +549,7 @@ Now, verify deployment in the following 2 manners:
         
         iii.	Under “Username” -> Enter the email address used to login to the Azure portal.
         
-        **Note:** “Active Directory Password Authentication” can also be selected -> Enter Azure username and password.
+        Note: “Active Directory Password Authentication” can also be selected -> Enter Azure username and password.
             
         iv.	Click “Connect”
         
@@ -593,6 +596,7 @@ The two tables created in Task 3 should now be visible.
 
 3.	Under “Firewalls” -> Ensure that “Enable firewall” = “Off”
 </br><img src="./Pictures/aas45.png" width="400"> 
+</br>
 
 ### Part 2: Install SqlServer modules from PowerShell gallery
 1.	Navigate to portal.azure.com
@@ -606,6 +610,7 @@ The two tables created in Task 3 should now be visible.
 </br><img src="./Pictures/aas47.png" width="450"> 
 
 5.	Click “Ok”
+</br>
 
 
 ### Part 3: Create a Service Principal (SPN)
@@ -642,6 +647,7 @@ The two tables created in Task 3 should now be visible.
 
 9.	Take note of the secret value as it will disappear when the page refreshes
 </br><img src="./Pictures/aas52.png" width="450"> 
+</br>
 
 #### Part 3.2: Assign the application to a role
 
@@ -662,6 +668,8 @@ The two tables created in Task 3 should now be visible.
     c.	Under “Select” -> Search for the app registration name (created in Task 11, Part 3.1) and select it from the list
 
     d.	Click “Save”
+
+</br>
 
 #### Part 3.3: Configure access policies on resources
 
@@ -704,6 +712,7 @@ The two tables created in Task 3 should now be visible.
 
 8.	Click “Save”
 </br><img src="./Pictures/aas57.png" width="250">
+</br>
 
 #### Part 3.4: Add the service principal to the server administrator role
 
@@ -717,13 +726,14 @@ The two tables created in Task 3 should now be visible.
 </br><img src="./Pictures/aas58.png" width="350">
 
 5.	Paste the following, using the Client ID and Tenant ID noted in Task 12, Part 3.1, Step 7:
-**app:ClientID@TenantID**
+**"app:ClientID@TenantID"**
 
     **Example:** app:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx@xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 6.	Click “Ok”
 
 7.	Click “Ok”
+</br>
 
 #### Part 3.5: Add credential to Automation Account
 
@@ -770,19 +780,27 @@ The two tables created in Task 3 should now be visible.
     
     “asazure://eastus.asazure.windows.net/asdemo” (note the double quotations).
     
+    </br>
+    
     b.	In line #3, replace 'Azure SQL Data Warehouse Server Name' with the name of the Azure SQL DW server name created in Task 2. 
     
     The format should be the following: *ServerName.database.windows.net*
     
     **Important:** Surround the SQL DW server name with double quotations.
     
+    </br>
+    
     c.	In line #3, replace 'Azure SQL Data Warehouse Name' with the name of the Azure SQL DW name created in Task 2, Step 3c. 
     
     **Important:** Surround the SQL DW name with double quotations.
     
+    </br>
+    
     d.	In line #4, replace 'Azure Analysis Services Model Name' with the name of your model/project created in Task 3, Part 1, Step 5. 
     
     **Important:** Surround the model name with double quotations.
+    
+    </br>
     
     e.	In line #5, replace 'Number of Months' with the number of months in the past for which partitions will be created. 
     
@@ -810,6 +828,8 @@ The two tables created in Task 3 should now be visible.
 </br>
 It may take a few minutes for the script to run.
 </br>
+</br>
+
 11.	Click the “Errors” tab to confirm there were no errors
 </br><img src="./Pictures/aas64.png" width="350">
 
@@ -843,7 +863,8 @@ The partitions created by the script should be visible.
     
         ii.   Under “Starts” -> Enter the date corresponding to the 1st of the next month. 
         
-        For example, if today is December 21st, 2019, enter January 1st, 2020. Enter a time for the refresh to occur. It is usually recommended to run the refresh during periods of low activity (i.e. early in the morning)
+        For example, if today is December 21st, 2019, enter January 1st, 2020. Enter a time for the refresh to occur. 
+        It is usually recommended to run the refresh during periods of low activity (i.e. early in the morning)
     
         iii.  Keep the default for “Time zone”.
     
