@@ -82,6 +82,7 @@ Deployment may take up to 20 minutes.
         iii. Under Start IP -> Paste the copied IP Address
         
         iv.  Under End IP -> Paste the copied IP Address
+        
         </br><img src="./Pictures/aas5.png" width="400">
     
     f.	Click “Save”
