@@ -373,8 +373,10 @@ Repeat Steps 1 to 13 of Task 6 for “SampleSalesData.csv”.
 </br>
 In the “Object Explorer” pane, under 
 </br>
+
 *ServerName.database.windows.net -> "Databases" -> SQLDataWarehouseName -> "Tables"*
 
+</br>
 the two tables created in Task 3 should appear.
 </br><img src="./Pictures/aas25.png" width="250">
 
