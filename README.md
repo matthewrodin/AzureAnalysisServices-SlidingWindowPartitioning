@@ -11,8 +11,7 @@
 1.  Navigate to: [Azure Portal](https://portal.azure.com/)
 
 2.  In the search bar, type “sql” and select “SQL data warehouses
-
-![](./Pictures/aas1.png)
+</br><img src="./Pictures/aas1.png" width="400">
 
 3.  On the top left, click “+ Add”
 </br><img src="./Pictures/aas2.png" width="400">
@@ -73,6 +72,44 @@ Deployment may take up to 20 minutes.
 	d.	Select the server created in Task 2
 
 	e.	Select “Firewalls and virtual networks”
+    </br><img src="./Pictures/aas4.png" width="150">
+    
+        i.   Under “Allow Azure services and resources to access this server” -> Click “On”
+        
+        ii.  Under Rule Name -> “Rule1”
+        
+        iii. Under Start IP -> Paste the copied IP Address
+        
+        iv.  Under End IP -> Paste the copied IP Address
+        </br><img src="./Pictures/aas5.png" width="400">
+    
+    f.	Click “Save”
+
+4.	A “1>” should now appear.
+
+5.	Run the following script:
+```sql
+CREATE TABLE [dbo].[DimCustomer](
+	[CustomerKey] [int] NOT NULL,
+	[AddressLine1] [varchar](500) NULL,
+	[CommuteDistance] [varchar](500) NULL,
+	[EmailAddress] [varchar](500) NULL,
+	[FirstName] [varchar](500) NULL,
+	[LastName] [varchar](500) NULL,
+	[Gender] [varchar](500) NULL,
+	[Phone] [varchar](500) NULL,
+	[YearlyIncome] [varchar](500) NULL,
+	[MaritalStatus] [varchar](500) NULL,
+	[GeographyKey] [int] NULL,
+	[EnglishEducation] [varchar](500) NULL,
+	[EnglishOccupation] [varchar](500) NULL,
+	[TotalChildren] [int] NULL);
+GO
+
+```
+
+
+    
 
 
 
