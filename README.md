@@ -60,7 +60,7 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
 * **Azure Analysis Services** (To store our tabular model in the cloud)
 
     * Fully managed platform as a service (PaaS) that provides enterprise-grade data models in the cloud. 
-    </br><img src="./Pictures/aas0_2.PNG" width="500">
+    </br><img src="./Pictures/aas0_2.PNG" width="650">
     
 </br>
 
@@ -680,7 +680,7 @@ The two tables created in Task 3 should now be visible.
 </br>
 
 ### Part 2: Install SqlServer modules from PowerShell gallery
-1.	Navigate to portal.azure.com
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
 
 2.	Navigate to the Automation Account resource created in Task 12, Part 1
 
