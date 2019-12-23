@@ -160,8 +160,9 @@ Deployment may take up to 20 minutes.
     
     j.	On the bottom left, click the blue “Create” button
     
-</br>Deployment may take a minute.</br>
-
+</br>Deployment may take a minute.
+</br>
+</br>
 
 4.	Click “Go to Resource”
 
@@ -300,13 +301,13 @@ Deployment may take up to 20 minutes.
     
         i.    Under “Account selection method” -> Select “From Azure Subscription”
         
-        ii.	  Under “Azure subscription” -> Select existing Azure subscription
+        ii.   Under “Azure subscription” -> Select existing Azure subscription
         
         iii.  Under “Server name” -> Select the server created in Step 2
         
-        iv.	  Under “Database name” -> Select the storage account created in Step 4
+        iv.   Under “Database name” -> Select the storage account created in Step 4
         
-        v.	  Under “Authentication type” -> Select “SQL authentication”
+        v.    Under “Authentication type” -> Select “SQL authentication”
         
         vi.   Under “User name” -> Enter the username of the server created in Task 2
         
@@ -314,7 +315,7 @@ Deployment may take up to 20 minutes.
         
         viii. **Note:** Leave all other fields as the default
         
-        ix.	Click “Create”
+        ix.   Click “Create”
         
     f.	Click “Next”
     
@@ -338,7 +339,7 @@ Deployment may take up to 20 minutes.
 
 13.	Under “Deployment”, verify that the deployment was successful and click “Finish”
 
-
+</br>
 Repeat Steps 1 to 13 of Task 6 for “SampleSalesData.csv”.
 
 * In Step 10g, select “dbo.FactSales”
@@ -366,18 +367,17 @@ Repeat Steps 1 to 13 of Task 6 for “SampleSalesData.csv”.
     d.	Under “Password” -> Enter the password of the server created in Task 2.
     
     e.	Click “Connect”
-    
+
+</br>
 In the “Object Explorer” pane, under 
 
 *ServerName.database.windows.net -> "Databases" -> SQLDataWarehouseName -> "Tables"*
 
 the two tables created in Task 3 should appear.
-
 </br><img src="./Pictures/aas25.png" width="250">
 
-3.	Right click one of the two tables and click “Select Top 100 Rows”.
-
-Under “Results”, data should now be populated in the selected table from the CSV file.
+3.	Right click one of the two tables and click “Select Top 100 Rows”. 
+    Under “Results”, data should now be populated in the selected table from the CSV file.
 
 4.	Repeat Step 8 for the other table
 
@@ -385,7 +385,7 @@ Under “Results”, data should now be populated in the selected table from the
 
 ##  Task 8: Create Data Model
 
-**Part 1:** Create Visual Studio Project
+### Part 1: Create Visual Studio Project
 
 1.	Open **Microsoft Visual Studio**
 
@@ -425,7 +425,7 @@ For more information about VS or to download, visit: [Visual Studio](https://doc
 
 9.	Click “Ok”
 </br>
-**Part 2:** Import Data in Visual Studio
+### Part 2: Import Data in Visual Studio
 
 1.	Once the workspace is set up, select “Import from Data Source”
 </br><img src="./Pictures/aas30.png" width="450"> 
@@ -462,14 +462,428 @@ For more information about VS or to download, visit: [Visual Studio](https://doc
 
 16.	Click “Close”
 </br>
-**Part 3:** Create Model in Visual Studio
+### Part 3: Create Model in Visual Studio
 
 1.	Click the “Diagram” button
-
-
+</br><img src="./Pictures/aas33.png" width="650">
+2.	Click and drag the “CustomerKey” column from the “DimCustomer” table onto the “CustomerKey” column of the “FactSales” table and release the mouse.
     
+    Now, a “1 to many” relationship should be formed between your tables:
+    </br><img src="./Pictures/aas34.png" width="400"> 
+
+</br>
+
+##  Task 9: Create Azure Analysis Services Server
+
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
+
+2.	In the search bar, type “analysis” and select “Analysis Services"
+</br><img src="./Pictures/aas35.png" width="350"> 
+
+3.	Click “+ Add”   
+</br><img src="./Pictures/aas36.png" width="250"> 
+
+    a.	Under “Server name” -> Create a name for the Analysis Services server
+
+    b.	Under “Subscription” -> Select existing Azure subscription
+
+    c.	Under “Resource Group” -> Select the resource group created in Task 2
+
+    d.	Under “Location” -> Select “Canada Central”
+
+    e.	Under “Pricing Tier” -> Select the pricing tier based on needs. Click on “View full pricing details” for more details.
+
+    f.	Leave the rest of the settings as default and click “Create”
+
+</br>
+
+##  Task 10: Deploy Data Model
+1.	Open **Microsoft Visual Studio**
+
+2.	Open the project created in Task 8.
+
+3.	Navigate to the “Solution Explorer” pane
+</br><img src="./Pictures/aas37.png" width="300"> 
+
+4.	Right-click the project create in Task 8, Part 1 and select “Properties”
+
+5.	Inside “Properties” -> Under “Deployment Server” -> Under “Server” -> Replace “localhost” with the Analysis Services server name created in Task 9.
+    
+    **Note:** This can be found on the “Overview” pane of the Analysis Services resource in the Azure portal. 
+    
+    The format for the server name is as follows: *asazure://RegionName.asazure.windows.net/AnalysisServicesName*
+    </br><img src="./Pictures/aas38.png" width="500"> 
+    
+    </br><img src="./Pictures/aas39.png" width="300"> 
+    
+6.	Click “Ok”
+
+7.	Right-click the project and select “Deploy”
+
+8.	Ensure that deployment was successful and click “Close”
+</br><img src="./Pictures/aas40.png" width="400"> 
+</br>
+Now, verify deployment in the following 2 manners:
+</br>
+1.	Through Azure portal
+
+    a.	Navigate to the Analysis Services resource in the Azure portal
+    
+    b.	Under “Models” -> Click “Manage”
+    
+    c.	The model should now be visible
+    </br><img src="./Pictures/aas41.png" width="500"> 
+    
+2.	Through SQL Server Management Studio
+
+    a.	Open **Microsoft SQL Server Management Studio**
+    
+    b.	Click “Connect” -> “Click “Analysis Services…”
+    
+        i.	Under “Server Name” -> Enter the Analysis Services server name 
+        
+        ii.	Under “Authentication” -> Select “Active Directory Universal Authentication”
+        
+        iii.	Under “Username” -> Enter the email address used to login to the Azure portal.
+        
+        **Note:** “Active Directory Password Authentication” can also be selected -> Enter Azure username and password.
+            
+        iv.	Click “Connect”
+        
+In the “Object Explorer” pane, under
+
+*asazure://RegionName.asazure.windows.net/AnalysisServicesName -> “Databases” -> ModelName (which should now be visible) ->“Tables"*
+
+The two tables created in Task 3 should now be visible.
+</br><img src="./Pictures/aas42.png" width="250"> 
+
+</br>
+
+##  Task 11: Create Azure Automation Account
+
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
+</br><img src="./Pictures/aas43.png" width="300"> 
+
+2.	In the search bar, type “automation” and select “Automation Accounts”
+
+3.	Click “+ Add”
+</br><img src="./Pictures/aas44.png" width="250"> 
+
+    a.	Under “Name” -> Enter a name for the Automation Account
+
+    b.	Under “Subscription -> Select your Azure subscription
+
+    c.	Under “Resource Group -> Select the resource group created in Task 2
+
+    d.	Under “Location” -> Select “Canada Central”
+
+    e.	Under “Create Azure Run As account” -> Select “Yes”
+
+    f.	Click “Create”
+
+</br>
+
+##  Task 12: Provision Azure Automation Account
+
+### Part 1: Ensure Azure Analysis Services firewall is disabled
+
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
+
+2.	Navigate to the Analysis Services resource created in Task 9
+
+3.	Under “Firewalls” -> Ensure that “Enable firewall” = “Off”
+</br><img src="./Pictures/aas45.png" width="400"> 
+
+### Part 2: Install SqlServer modules from PowerShell gallery
+1.	Navigate to portal.azure.com
+
+2.	Navigate to the Automation Account resource created in Task 12, Part 1
+
+3.	Under “Modules”, click “Browse gallery”
+</br><img src="./Pictures/aas46.png" width="450"> 
+
+4.	Search “sql server” -> Click on the “Sqlserver” module -> Click “Import”
+</br><img src="./Pictures/aas47.png" width="450"> 
+
+5.	Click “Ok”
 
 
+### Part 3: Create a Service Principal (SPN)
 
+#### Part 3.1: Create app registration and secret
 
+**Note:** You must have sufficient permissions to register an application with your Azure AD tenant, and assign the application to a role in your Azure subscription. Your account must have __Microsoft.Authorization/*/Write__ access to assign an AD app to a role. This action is granted through the Owner role or User Access Administrator role. If your account is assigned to the Contributor role, you don't have adequate permission. You receive an error when attempting to assign the service principal to a role.
+
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
+
+2.	In the search bar, type “azure active” and select “Azure Active Directory”
+</br><img src="./Pictures/aas48.png" width="300"> 
+
+3.	Under “App registrations” -> Click “+ New Registration”
+</br><img src="./Pictures/aas49.png" width="500"> 
+
+4.	Under “Name” -> Enter a name for the app registration
+
+5.	Under “Supported account types” -> Select an option that is suitable for the scenario. For more information, click “Help me choose…”
+
+6.	Click “Register”
+
+7.	Keep note of the “Application (client) ID” and the “Directory (tenant) ID”
+</br><img src="./Pictures/aas50.png" width="550"> 
+
+8.	Under “Certificates & Secrets” -> Click “+ New Client Secret”
+</br><img src="./Pictures/aas51.png" width="550"> 
+
+    a.	Under “Description” -> Enter a name for your secret
+    
+    b.	Under “Expires” -> Select “Never”
+    
+    c.	Click “Add”
+
+9.	Take note of the secret value as it will disappear when the page refreshes
+</br><img src="./Pictures/aas52.png" width="450"> 
+
+#### Part 3.2: Assign the application to a role
+
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
+
+2.	In the search bar, type “subscription” and select “Subscriptions”
+</br><img src="./Pictures/aas53.png" width="300"> 
+
+3.	Click on your existing Azure subscription
+
+4.	Under “Access control (IAM)” -> Under “Add a role assignment” -> Click “Add”
+</br><img src="./Pictures/aas54.png" width="500"> 
+
+    a.	Under “Role” -> Select “Contributor”
+
+    b.	Under “Assign access to” -> Select “Azure AD user, group, or service principal”
+
+    c.	Under “Select” -> Search for the app registration name (created in Task 11, Part 3.1) and select it from the list
+
+    d.	Click “Save”
+
+#### Part 3.3: Configure access policies on resources
+
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
+
+2.	In the search bar, type “key vault” and select “Key vaults”
+</br><img src="./Pictures/aas55.png" width="250"> 
+
+3.	Click “+ Add”
+</br><img src="./Pictures/aas55_1.png" width="200">
+
+    a.	Under “Subscription” -> Select your existing subscription
+
+    b.	Under “resource group” -> Select the resource created in Task 2
+
+    c.	Under “Key vault name” -> Enter a name for the key vault
+
+    d.	Under “Region” -> Select “Canada Central”
+
+    e.	Under “Pricing Tier” -> Select “Standard”
+
+    f.	Click “Review + create”
+
+    g.	Click “Create”
+
+4.	Click “Go to resource”
+
+5.	Under “Access policies” -> Click “+ Add Access Policy”
+</br><img src="./Pictures/aas56.png" width="450">
+
+    a.	Under “Configure from template (optional)” -> Select “Key, Secret & Certificate Management”
+
+    b.	Under “Select principal” -> Search for the app registration name (created in Task 11, Part 3.1) and select it from the list
+
+    c.	Click “Select”
+    
+    **Note:** Keep all other fields as default
+    
+7.	Click “Add”
+
+8.	Click “Save”
+</br><img src="./Pictures/aas57.png" width="250">
+
+#### Part 3.4: Add the service principal to the server administrator role
+
+1.	Open **SQL Server Management Studio**
+
+2.	Connect to the Azure Analysis Services server (as seen in Task 10)
+
+3.	In the “Object Explorer” pane, right-click the server -> Click “Properties”
+
+4.	Under “Security” -> Click “Add…”
+</br><img src="./Pictures/aas58.png" width="350">
+
+5.	Paste the following, using the Client ID and Tenant ID noted in Task 12, Part 3.1, Step 7:
+**app:ClientID@TenantID**
+
+    **Example:** app:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx@xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+6.	Click “Ok”
+
+7.	Click “Ok”
+
+#### Part 3.5: Add credential to Automation Account
+
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
+
+2.	Navigate to the Automation Account created in Task 11
+
+3.	Under “Credentials” -> Select “+ Add a credential”
+
+    a.	Under “Name” -> Enter “ServicePrincipal”
+
+    b.	Under “User name” -> Enter the Client ID, noted in Task 12, Part 3.1, Step 7
+
+    c.	Under “Password” -> Enter the secret, noted in Task 12, Part 3.1, Step 9
+
+    d.	Click “Create”
+
+</br>
+
+##  Task 13: Create Azure Automation Runbook
+1.	Navigate to [PowerShell Scripts](https://github.com/matthewrodin/AzureAnalysisServices-SlidingWindowPartitioning/tree/master/PowerShell%20Scripts)
+
+2.	Download “Initial_Partition_Creation.ps1” and “Sliding_Window.ps1” to a local machine.
+
+3.	Navigate to [Azure Portal](https://portal.azure.com/)
+
+4.	Navigate to the Automation Account created in Task 11
+
+5.	Under “Runbooks” -> Click “Import a runbook”
+</br><img src="./Pictures/aas59.png" width="450">
+
+6.	Click the blue browse button and browse for the local copy of “Initial_Partition_Creation.ps1” 
+</br><img src="./Pictures/aas60.png" width="200">
+
+7.	Click “Create”
+
+    a.	In line #2, replace 'Azure Analysis Services Server Name' with the name of the AAS server name created in Task 9.
+    
+    The format should be the following: *asazure://RegionName.asazure.windows.net/AnalysisServicesName*
+    
+    **Important:** Surround the AAS server name with double quotations. 
+    
+    For example, if the server name is: asazure://eastus.asazure.windows.net/asdemo, replace 'Azure Analysis Services Server Name' with: 
+    
+    “asazure://eastus.asazure.windows.net/asdemo” (note the double quotations).
+    
+    b.	In line #3, replace 'Azure SQL Data Warehouse Server Name' with the name of the Azure SQL DW server name created in Task 2. 
+    
+    The format should be the following: *ServerName.database.windows.net*
+    
+    **Important:** Surround the SQL DW server name with double quotations.
+    
+    c.	In line #3, replace 'Azure SQL Data Warehouse Name' with the name of the Azure SQL DW name created in Task 2, Step 3c. 
+    
+    **Important:** Surround the SQL DW name with double quotations.
+    
+    d.	In line #4, replace 'Azure Analysis Services Model Name' with the name of your model/project created in Task 3, Part 1, Step 5. 
+    
+    **Important:** Surround the model name with double quotations.
+    
+    e.	In line #5, replace 'Number of Months' with the number of months in the past for which partitions will be created. 
+    
+    For example, if 4 is entered, the following partitions will be created:
+    * 1 Months Old
+    * 2 Months Old
+    * 3 Months Old
+    * 4 Months Old
+    * More than 4 Months Old
+    
+    **Important:** DO NOT surround the number of months with double quotations. Simply enter the integer.
+    
+8.	Click “Save”
+</br><img src="./Pictures/aas61.png" width="450">
+
+9.	Click “Publish”
+</br><img src="./Pictures/aas62.png" width="450">
+
+    a.	Click “Yes” to confirm
+    
+10.	Click “> Start” to run the script
+</br><img src="./Pictures/aas63.png" width="450">
+
+    a.	Click “Yes” to confirm
+</br>
+It may take a few minutes for the script to run.
+</br>
+11.	Click the “Errors” tab to confirm there were no errors
+</br><img src="./Pictures/aas64.png" width="350">
+
+To verify that the partitions were created correctly, open SSMS. In the “Object Explorer” pane, under 
+
+*asazure://RegionName.asazure.windows.net/AnalysisServicesName -> “Databases” -> ModelName -> “Tables”  -> Right-click “FactSales” -> Select “Partitions…”*
+    
+The partitions created by the script should be visible. 
+
+12.	Under “Runbooks” -> Click “Import a runbook”
+
+13.	Click the blue browse button and browse for the local copy of “Sliding_Window.ps1” 
+
+14.	Click “Create” and follow steps 7a to 7e of Task 13
+
+15.	Click “Save”
+
+16.	Click “Publish”
+
+    a.	Click “Yes” to confirm
+    
+17.	Click “Link to Schedule”
+</br><img src="./Pictures/aas65.png" width="450">
+
+18.	Select “Link a schedule to your runbook”
+</br><img src="./Pictures/aas66.png" width="250">
+
+    a.	Click “+ Create a new schedule”
+    
+        i.    Under “Name” -> Enter “Monthly Sliding Window Refresh”
+    
+        ii.   Under “Starts” -> Enter the date corresponding to the 1st of the next month. 
+        
+        For example, if today is December 21st, 2019, enter January 1st, 2020. Enter a time for the refresh to occur. It is usually recommended to run the refresh during periods of low activity (i.e. early in the morning)
+    
+        iii.  Keep the default for “Time zone”.
+    
+        iv.   Under “Recurrence” -> select “Recurring”
+    
+        v.    Under Recur every” -> Type “1” and select “Month
+    
+        vi.   Under “Monthly occurrences” -> Select “Month days”
+    
+        vii.  Under “Run on days of month” -> Click “1”
+    
+        viii. Keep all other fields as default and click “Create”
+    
+    b.	Click “Ok”
+
+</br>
+
+##  Task 14: Connect to Azure Analysis Services from Power BI
+
+1.	Open **Power BI Desktop**. If Power BI Desktop is not currently installed, it can be using the following link: [PowerBI](https://powerbi.microsoft.com/en-us/downloads/)
+
+2.	Click “Get data”
+</br><img src="./Pictures/aas67.png" width="200">
+
+3.	Under “Azure” -> Click “Azure Analysis Services database”
+
+    a.	Click “Connect”
+    </br><img src="./Pictures/aas68.png" width="350">
+
+4.	Under “Server” -> Enter the name of the AAS server name created in Task 9.
+
+5.	Ensure that “Connect live” is selected
+
+6.	Click “Ok”
+
+7.	Double-click the model name and select “Model”
+</br><img src="./Pictures/aas69.png" width="450">
+
+8.	Click “Ok”
+
+On the right, the two tables should now be visible:
+</br><img src="./Pictures/aas70.png" width="150">
 
