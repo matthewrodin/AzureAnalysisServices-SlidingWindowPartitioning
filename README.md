@@ -54,7 +54,7 @@ Deployment may take up to 20 minutes.
 </br>
 
 ##  Task 3: Prepare SQL Data Warehouse for Data Ingestion
-1. Open command prompt
+1. Open **Command Prompt**
 
 
 2. Run the following command:
@@ -132,7 +132,7 @@ Deployment may take up to 20 minutes.
 
 ##  Task 4: Create a Storage Account
 
-1.	Navigate to portal.azure.com
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
 
 2.	In the search bar, type “storage” and select “Storage accounts”
 </br><img src="./Pictures/aas6.png" width="250">
@@ -166,17 +166,17 @@ Deployment may take up to 20 minutes.
 4.	Click “Go to Resource”
 
 5.	Under “Blob service” -> Click “Containers”
-</br><img src="./Pictures/aas8.png" width="250">
+</br><img src="./Pictures/aas8.png" width="200">
 
 6.	Click “+ Container”
-</br><img src="./Pictures/aas9.png" width="300">
+</br><img src="./Pictures/aas9.png" width="350">
 
     a.	Under “Name” -> Enter a name for the container
     
     b.	Under “Public access level” -> Select “Blob (anonymous read access for blobs only)”
     
 7.	Select “Storage Explorer”
-</br><img src="./Pictures/aas10.png" width="250">
+</br><img src="./Pictures/aas10.png" width="200">
 
 8.	Click on “BLOB CONTAINERS”
 </br><img src="./Pictures/aas11.png" width="300">
@@ -195,7 +195,7 @@ Deployment may take up to 20 minutes.
 
 ##  Task 5: Create a Data Factory
 
-1.	Navigate to portal.azure.com
+1.	Navigate to [Azure Portal](https://portal.azure.com/)
 
 2.	In the search bar, type “data factory” and select “SQL data warehouses”
 </br><img src="./Pictures/aas14.png" width="200">
@@ -221,7 +221,7 @@ Deployment may take up to 20 minutes.
 
 ##  Task 6: Create a Data Factory Pipeline
 
-1.	Navigate to adf.azure.com
+1.	Navigate to [Azure Data Factory](https://adf.azure.com/)
 
 2.	Under “Azure Active Directory” -> Select existing Azure AD
 
@@ -259,15 +259,15 @@ Deployment may take up to 20 minutes.
     
     e.	Under “Name” -> Enter a name for the connection
     
-        i.	Under “Account selection method” -> Select “From Azure Subscription”
+        i.   Under “Account selection method” -> Select “From Azure Subscription”
         
-        ii.	Under “Azure subscription” -> Select existing Azure subscription
+        ii.  Under “Azure subscription” -> Select existing Azure subscription
         
-        iii.	Under “Storage account name” -> Select the storage account created in Task 4
+        iii. Under “Storage account name” -> Select the storage account created in Task 4
         
-        iv.	Note: Leave all other fields as the default
+        iv.	 **Note:** Leave all other fields as the default
         
-        v.	Click “Create”
+        v.	 Click “Create”
         
     f.	Click “Next”
     
@@ -284,6 +284,92 @@ Deployment may take up to 20 minutes.
     l.	Click “Next”
     
     m.	Verify the schema under “Preview” and click “Next”
+
+10.	Under “Destination”
+
+    a.	Click “Azure”
+
+    b.	Click “Create new connection”
+    
+    c.	Select “Azure Synapse Analytics (formerly SQL DW)”
+
+    d.	Click “Continue”
+    </br><img src="./Pictures/aas20.png" width="400">
+    
+    e.	Under “Name” -> Enter a name for the connection
+    
+        i.    Under “Account selection method” -> Select “From Azure Subscription”
+        
+        ii.	  Under “Azure subscription” -> Select existing Azure subscription
+        
+        iii.  Under “Server name” -> Select the server created in Step 2
+        
+        iv.	  Under “Database name” -> Select the storage account created in Step 4
+        
+        v.	  Under “Authentication type” -> Select “SQL authentication”
+        
+        vi.   Under “User name” -> Enter the username of the server created in Task 2
+        
+        vii.  Under “Password -> Enter the username of the server created in Task 2
+        
+        viii. **Note:** Leave all other fields as the default
+        
+        ix.	Click “Create”
+        
+    f.	Click “Next”
+    
+    g.	In the dropdown, select “dbo.DimCustomer”
+    </br><img src="./Pictures/aas21.png" width="450">
+    
+    h.	Click “Next”
+    
+    i.	Alter the source types in order to match the destination. The column mapping should look like this:
+    </br><img src="./Pictures/aas22.png" width="550">
+    
+    j.	Click “Next”
+    
+11.	Under “Settings”
+
+    a.	Under “Staging account linked service” -> Select the connection created in Task 6 (Step 9e)
+    
+    b.	Click “Next”
+
+12.	Under “Summary”, verify the summary appropriately summarizes the intended pipeline and click “Next”
+
+13.	Under “Deployment”, verify that the deployment was successful and click “Finish”
+
+
+Repeat Steps 1 to 13 of Task 6 for “SampleSalesData.csv”.
+
+* In Step 10g, select “dbo.FactSales”
+
+* In Step 10i, the mapping should match the following:
+</br><img src="./Pictures/aas23.png" width="550">
+
+</br>
+
+##  Task 7: Verify Data Ingestion
+
+1.	Open **Microsoft SQL Server Management Studio**
+
+    For more information about SSMS or to download, visit: [SSMS](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+
+2.	Click “Connect” -> “Database Engine…”
+</br><img src="./Pictures/aas24.png" width="300">
+
+    a.	Under “Server name” -> Enter the server name of server created in Task 2
+    
+    b.	Under “Authentication” -> Select “SQL Server Authentication”
+    
+    c.	Under “Login” -> Enter the username of the server created in Task 2
+    
+    d.	Under “Password” -> Enter the password of the server created in Task 2.
+    
+    e.	Click “Connect”
+    
+In the “Object Explorer” pane, under <Servername>.database.windows.net -> Databases -> <SQLDataWarehouseName> -> Tables you should see the two tables created in Task 3
+    
+
 
 
 
