@@ -4,16 +4,18 @@
 1.  Navigate to: [Sample Data](https://github.com/matthewrodin/AzureAnalysisServices-SlidingWindowPartitioning/tree/master/Sample%20Data)
 
 2.  Download “SampleCustomerData.csv” and “SampleSalesData.csv” to a local machine
-
 </br>
+
 ##  Task 2: Create Azure SQL Database
 
 1.  Navigate to: [Azure Portal](https://portal.azure.com/)
 
 2.  In the search bar, type “sql” and select “SQL data warehouses
+
 ![](./Pictures/aas1.png)
 
 3.  On the top left, click “+ Add”</br>
+
 ![](./Pictures/aas2.png)
 
     a.  Under “Subscription” -> Select existing Azure subscription 
@@ -43,10 +45,10 @@
 		ii.  Scale the data warehouse. For reference, the service levels range from DW100c to DW30000c. 
 
 		iii. Click “Apply”
-
-	f. On the bottom left, click the blue “Review + Create” button
-
-	g.  On the bottom left, click the blue “Create” button
+        
+    f. On the bottom left, click the blue “Review + Create” button
+    
+    g.  On the bottom left, click the blue “Create” button
     
 </br>
 Deployment may take up to 20 minutes.
