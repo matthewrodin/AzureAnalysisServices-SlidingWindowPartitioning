@@ -10,13 +10,12 @@
 
 1. Navigate to: [Azure Portal](https://portal.azure.com/)
 
-4. In the search bar, type “sql” and select “SQL data warehouses
+2. In the search bar, type “sql” and select “SQL data warehouses
 <img src="./Pictures/aas1.png" width="400">
 
 3. On the top left, click “+ Add”</br>
-<img src="./Pictures/aas2.png" width="400">
+![](./pictures/aas0.png)
 
-j
 
     a. Under “Subscription” -> Select existing Azure subscription 
     
