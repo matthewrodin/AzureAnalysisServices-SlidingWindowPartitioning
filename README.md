@@ -88,25 +88,53 @@ Deployment may take up to 20 minutes.
 4.	A “1>” should now appear.
 
 5.	Run the following script:
-```sql
-CREATE TABLE [dbo].[DimCustomer](
-	[CustomerKey] [int] NOT NULL,
-	[AddressLine1] [varchar](500) NULL,
-	[CommuteDistance] [varchar](500) NULL,
-	[EmailAddress] [varchar](500) NULL,
-	[FirstName] [varchar](500) NULL,
-	[LastName] [varchar](500) NULL,
-	[Gender] [varchar](500) NULL,
-	[Phone] [varchar](500) NULL,
-	[YearlyIncome] [varchar](500) NULL,
-	[MaritalStatus] [varchar](500) NULL,
-	[GeographyKey] [int] NULL,
-	[EnglishEducation] [varchar](500) NULL,
-	[EnglishOccupation] [varchar](500) NULL,
-	[TotalChildren] [int] NULL);
-GO
+    ```sql
+    CREATE TABLE [dbo].[DimCustomer](
+        [CustomerKey] [int] NOT NULL,
+        [AddressLine1] [varchar](500) NULL,
+        [CommuteDistance] [varchar](500) NULL,
+        [EmailAddress] [varchar](500) NULL,
+        [FirstName] [varchar](500) NULL,
+        [LastName] [varchar](500) NULL,
+        [Gender] [varchar](500) NULL,
+        [Phone] [varchar](500) NULL,
+        [YearlyIncome] [varchar](500) NULL,
+        [MaritalStatus] [varchar](500) NULL,
+        [GeographyKey] [int] NULL,
+        [EnglishEducation] [varchar](500) NULL,
+        [EnglishOccupation] [varchar](500) NULL,
+        [TotalChildren] [int] NULL);
+    GO
 
-```
+    ```
+
+6.	Run the following script:
+    
+    ```sql
+    CREATE TABLE [dbo].[FactSales](
+        [CustomerKey] [int] NOT NULL,
+        [ProductKey] [int] NOT NULL,
+        [OrderDateKey] [varchar](500) NOT NULL,
+        [CurrencyKey] [int] NOT NULL,
+        [SalesOrderNumber] [varchar](500) NOT NULL,
+        [SalesTerritoryKey] [int] NOT NULL,
+        [TaxAmt] [varchar](500) NOT NULL,
+        [Freight] [varchar](500) NOT NULL,
+        [SalesAmount] [varchar](500) NOT NULL,
+        [Year] [int] NOT NULL,
+        [Month] [int] NOT NULL,
+        [Day] [int] NOT NULL)
+    GO
+
+    ```
+
+</br>
+
+##  Task 4: Create a Storage Account
+
+1.	Navigate to portal.azure.com
+
+2.	In the search bar, type “storage” and select “Storage accounts”
 
 
     
