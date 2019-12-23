@@ -2,11 +2,13 @@
 
 In this article, we will explore how to implement sliding window partitioning to an Azure Analysis Services tabular model to be analyzed in Power BI.
 </br>
+</br>
 
 ### What is sliding window partitioning?
 Essentially, the sliding window partitioning strategy involved maintaining a fixed number of partitions for a certain table based on a date field. When new data is consumed, a new partition is added to the table, while the oldest partition is merged with a large partition of historical data. 
 
 Since in most cases data is loaded incrementally on a daily basis, we would ideally only want to refresh the newest partition in order to save time and resources, with the idea that the data in the older partitions remains constant. 
+</br>
 </br>
 
 ### What is sliding window partitioning?
@@ -19,6 +21,7 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
     * Data is first prepared and then stored in relation tables. This reduces storage costs, and improves query performance
     
     **Note:** Azure SQL Data Warehouse will soon be replaced by [Azure Synapse](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)
+</br>
 
 * **Azure Blob Storage** (To store raw data files)
     * Azure Blob storage is Microsoft's object storage solution for the cloud.
@@ -29,7 +32,7 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
     </br><img src="./Pictures/aas0_1.png" width="300">
 </br>
  
-* Azure Data Factory (To ingest data from raw file to Azure SQL Data Warehouse)
+* **Azure Data Factory** (To ingest data from raw file to Azure SQL Data Warehouse)
 
     * A hybrid data integration service which makes connecting and moving data easy
     
@@ -38,7 +41,7 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
     * Can schedule data copies from on-premises to the cloud
 </br>
 
-* SQL Server Management Studio (To connect to Azure SQL Data Warehouse and Azure Analysis Services)
+* **SQL Server Management Studio** (To connect to Azure SQL Data Warehouse and Azure Analysis Services)
 
     * Integrated environment for managing any SQL infrastructure, from SQL Server to Azure SQL Database
     
@@ -47,27 +50,28 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
     * Use SSMS to query, design, and manage your databases and data warehouses
 </br>
 
-* Visual Studio (To create tabular model and deploy to Azure Analysis Services)
+* **Visual Studio** (To create tabular model and deploy to Azure Analysis Services)
 
     * It is an integrated development environment (IDE) which is a creative launching pad that you can use to edit, debug, and build code, and then publish an app
     
     * Includes compilers, code completion tools, graphical designers, and many more features to ease the software development process
 </br>
 
-* Azure Analysis Services (To store our tabular model in the cloud)
+* **Azure Analysis Services** (To store our tabular model in the cloud)
 
     * Fully managed platform as a service (PaaS) that provides enterprise-grade data models in the cloud. 
-    </br><img src="./Pictures/aas0_2.png" width="500">
+    </br><img src="./Pictures/aas0_2.PNG" width="500">
+    
 </br>
 
-* Azure Automation (To automate PowerShell scripts that create new partitions on a monthly basis)
+* **Azure Automation** (To automate PowerShell scripts that create new partitions on a monthly basis)
 
     * A cloud-based automation and configuration service that provides consistent management across your Azure and non-Azure environments.
     
     * Consists of process automation, update management, and configuration feature
 </br>
 
-* Power BI (To analyze and visualize data within the partitions of our tabular model)
+* **Power BI** (To analyze and visualize data within the partitions of our tabular model)
 
     * A business analytics solution that lets you visualize your data and share insights across your organization, or embed them in your app or website.
 
