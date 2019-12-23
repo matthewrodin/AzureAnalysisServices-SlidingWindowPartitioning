@@ -160,7 +160,7 @@ Deployment may take up to 20 minutes.
     
     j.	On the bottom left, click the blue “Create” button
     
-</br>Deployment may take a minute.
+</br>Deployment may take a minute.</br>
 
 
 4.	Click “Go to Resource”
@@ -179,7 +179,7 @@ Deployment may take up to 20 minutes.
 </br><img src="./Pictures/aas10.png" width="200">
 
 8.	Click on “BLOB CONTAINERS”
-</br><img src="./Pictures/aas11.png" width="300">
+</br><img src="./Pictures/aas11.png" width="250">
 
 9.	Click on the container that was just created
 
@@ -265,9 +265,9 @@ Deployment may take up to 20 minutes.
         
         iii. Under “Storage account name” -> Select the storage account created in Task 4
         
-        iv.	 **Note:** Leave all other fields as the default
+        iv.  **Note:** Leave all other fields as the default
         
-        v.	 Click “Create”
+        v.   Click “Create”
         
     f.	Click “Next”
     
@@ -367,11 +367,104 @@ Repeat Steps 1 to 13 of Task 6 for “SampleSalesData.csv”.
     
     e.	Click “Connect”
     
-In the “Object Explorer” pane, under <Servername>.database.windows.net -> Databases -> <SQLDataWarehouseName> -> Tables you should see the two tables created in Task 3
+In the “Object Explorer” pane, under 
+
+*ServerName.database.windows.net -> "Databases" -> SQLDataWarehouseName -> "Tables"*
+
+the two tables created in Task 3 should appear.
+
+</br><img src="./Pictures/aas25.png" width="250">
+
+3.	Right click one of the two tables and click “Select Top 100 Rows”.
+
+Under “Results”, data should now be populated in the selected table from the CSV file.
+
+4.	Repeat Step 8 for the other table
+
+</br>
+
+##  Task 8: Create Data Model
+
+**Part 1:** Create Visual Studio Project
+
+1.	Open **Microsoft Visual Studio**
+
+For more information about VS or to download, visit: [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019) 
+
+2.	Click “Create a new project”
+</br><img src="./Pictures/aas26.png" width="250">
+
+3.	Select “Analysis Services Tabular Project” and click “Next”
+</br><img src="./Pictures/aas27.png" width="400"> 
+
+    If this does not show up in the list of templates, scroll to the bottom and click “Install more tools and features”
+    </br><img src="./Pictures/aas28.png" width="400"> 
+
+    a.	Inside Visual Studio Installer, click “Individual components”
+
+    b.	Select the following:
+
+        i.   Microsoft Analysis Services Projects
     
+        ii.  Microsoft BI Shared Components for Visual Studio
 
+        iii. Microsoft.VisualStudio.Tools.Application
 
+        iv.  SQL Server Integration Services Projects
+    </br><img src="./Pictures/aas29.png" width="450"> 
 
+    c.	Click “Modify” on the bottom right.
+
+5.	Under “Project name” -> Enter a name for the VS project
+
+6.	Keep all other settings as default and click “Create”
+
+7.	Under “Select an Analysis Services instance to use while authoring projects” -> Select “Integrated workspace”
+
+8.	Under “Compatibility level” -> Select “SQL Server 2016 RTM (1200)
+
+9.	Click “Ok”
+</br>
+**Part 2:** Import Data in Visual Studio
+
+1.	Once the workspace is set up, select “Import from Data Source”
+</br><img src="./Pictures/aas30.png" width="450"> 
+
+2.	Select “Microsoft Azure SQL Data Warehouse” and click “Next”
+</br><img src="./Pictures/aas31.png" width="450"> 
+
+3.	Important: Do not modify “Friendly connection name”
+
+4.	Under “Server name” -> Enter the name of the server created in Task 2
+
+5.	Under “User name” -> Enter the username of the server created in Task 2
+
+6.	Under “Password” -> Enter the password of the server created in Task 2
+
+7.	Click “Test Connection” and ensure that the following message is received:
+</br><img src="./Pictures/aas32.png" width="300"> 
+
+8.	Under “Database Name” -> Select the database created in Task 2, Step 5
+
+9.	Click “Next”
+
+10.	Tick “Service Account”
+
+11.	Click “Next”
+
+12.	Tick “Select from a list of tables and views to choose the data to import”
+
+13.	Click “Next”
+
+14.	Tick “DimCustomer” and “FactSales”
+
+15.	Click “Finish”
+
+16.	Click “Close”
+</br>
+**Part 3:** Create Model in Visual Studio
+
+1.	Click the “Diagram” button
 
 
     
