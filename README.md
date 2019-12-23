@@ -68,7 +68,7 @@ Deployment may take up to 20 minutes.
 	b.	Navigate to portal.azure.com
 
 	c.	In the search bar, type “sql server” and select “SQL servers”
-<img src="./Pictures/aas3.png" width="400">
+    </br><img src="./Pictures/aas3.png" width="400">
 
 	d.	Select the server created in Task 2
 
