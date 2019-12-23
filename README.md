@@ -72,7 +72,7 @@ Deployment may take up to 20 minutes.
 	d.	Select the server created in Task 2
 
 	e.	Select “Firewalls and virtual networks”
-    </br><img src="./Pictures/aas4.png" width="150">
+    </br><img src="./Pictures/aas4.png" width="200">
     
         i.   Under “Allow Azure services and resources to access this server” -> Click “On”
         
@@ -135,10 +135,10 @@ Deployment may take up to 20 minutes.
 1.	Navigate to portal.azure.com
 
 2.	In the search bar, type “storage” and select “Storage accounts”
-</br><img src="./Pictures/aas6.png" width="400">
+</br><img src="./Pictures/aas6.png" width="250">
 
 3.	Click “+ Add”
-</br><img src="./Pictures/aas7.png" width="400">
+</br><img src="./Pictures/aas7.png" width="250">
 
     a.	Under “Subscription” -> Select existing Azure subscription
     
@@ -162,10 +162,11 @@ Deployment may take up to 20 minutes.
     
 </br>Deployment may take a minute.
 
+
 4.	Click “Go to Resource”
 
 5.	Under “Blob service” -> Click “Containers”
-</br><img src="./Pictures/aas8.png" width="150">
+</br><img src="./Pictures/aas8.png" width="250">
 
 6.	Click “+ Container”
 </br><img src="./Pictures/aas9.png" width="300">
@@ -175,10 +176,10 @@ Deployment may take up to 20 minutes.
     b.	Under “Public access level” -> Select “Blob (anonymous read access for blobs only)”
     
 7.	Select “Storage Explorer”
-</br><img src="./Pictures/aas10.png" width="150">
+</br><img src="./Pictures/aas10.png" width="250">
 
 8.	Click on “BLOB CONTAINERS”
-</br><img src="./Pictures/aas11.png" width="200">
+</br><img src="./Pictures/aas11.png" width="300">
 
 9.	Click on the container that was just created
 
@@ -231,7 +232,7 @@ Deployment may take up to 20 minutes.
 5.	Click “Continue”
 
 6.	Click the Home icon
-</br><img src="./Pictures/aas16.png" width="150">
+</br><img src="./Pictures/aas16.png" width="250">
 
 7.	Click “Copy data”
 </br><img src="./Pictures/aas17.png" width="400">
@@ -254,7 +255,7 @@ Deployment may take up to 20 minutes.
     c.	Select “Azure Blob Storage”
     
     d.	Click “Continue
-    </br><img src="./Pictures/aas19.png" width="300">
+    </br><img src="./Pictures/aas19.png" width="400">
     
     e.	Under “Name” -> Enter a name for the connection
     
