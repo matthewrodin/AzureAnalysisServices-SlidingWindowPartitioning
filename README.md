@@ -67,7 +67,6 @@ Deployment may take up to 20 minutes.
 	b.	Navigate to portal.azure.com
 
 	c.	In the search bar, type “sql server” and select “SQL servers”
-    
     </br><img src="./Pictures/aas3.png" width="400">
 
 	d.	Select the server created in Task 2
@@ -82,8 +81,7 @@ Deployment may take up to 20 minutes.
         iii. Under Start IP -> Paste the copied IP Address
         
         iv.  Under End IP -> Paste the copied IP Address
-        
-        </br><img src="./Pictures/aas5.png" width="400">
+    </br><img src="./Pictures/aas5.png" width="400">
     
     f.	Click “Save”
 
@@ -137,6 +135,156 @@ Deployment may take up to 20 minutes.
 1.	Navigate to portal.azure.com
 
 2.	In the search bar, type “storage” and select “Storage accounts”
+</br><img src="./Pictures/aas6.png" width="400">
+
+3.	Click “+ Add”
+</br><img src="./Pictures/aas7.png" width="400">
+
+    a.	Under “Subscription” -> Select existing Azure subscription
+    
+    b.	Under “Resource group” Select the resource group created in Task 2
+    
+    c.	Under “Storage account name” -> Enter a name for the storage account
+    
+    d.	Under “Location” -> Select “Canada Central”
+    
+    e.	Under “Performance” -> Select “Standard”
+
+    f.	Under “Account kind” -> Select “StorageV2 (general purpose v2)”
+
+    g.	Under “Replication” -> Select “Locally-redundant storage (LRS)”
+    
+    h.	Under “Access tier (default)” -> Select “Cool”
+    
+    i.	On the bottom left, click the blue “Review + Create” button
+    
+    j.	On the bottom left, click the blue “Create” button
+    
+</br>Deployment may take a minute.
+
+4.	Click “Go to Resource”
+
+5.	Under “Blob service” -> Click “Containers”
+</br><img src="./Pictures/aas8.png" width="150">
+
+6.	Click “+ Container”
+</br><img src="./Pictures/aas9.png" width="300">
+
+    a.	Under “Name” -> Enter a name for the container
+    
+    b.	Under “Public access level” -> Select “Blob (anonymous read access for blobs only)”
+    
+7.	Select “Storage Explorer”
+</br><img src="./Pictures/aas10.png" width="150">
+
+8.	Click on “BLOB CONTAINERS”
+</br><img src="./Pictures/aas11.png" width="200">
+
+9.	Click on the container that was just created
+
+10.	Click “Upload”
+</br><img src="./Pictures/aas12.png" width="400">
+
+11.	Click the blue browse button and upload the local copies of “SampleCustomerData.csv” and “SampleSalesData.csv” to the container. 
+
+12.	Leave “Overwrite if files already exist” blank
+</br><img src="./Pictures/aas13.png" width="300">
+
+</br>
+
+##  Task 5: Create a Data Factory
+
+1.	Navigate to portal.azure.com
+
+2.	In the search bar, type “data factory” and select “SQL data warehouses”
+</br><img src="./Pictures/aas14.png" width="200">
+
+3.	Click “+ Add”
+</br><img src="./Pictures/aas15.png" width="300">
+
+    a.	Under “Name” -> Enter a name for the data factory
+    
+    b.	Under “Version” -> Select “V2”
+    
+    c.	Under Subscription” -> Select existing Azure subscription
+    
+    d.	Under “Resource Group” -> Select the resource group created in Task 2
+    
+    e.	Under “Location” -> Select “Canada Central”
+    
+    f.	Untick “Enable Git”
+    
+    g.	Click “Create”
+
+</br>
+
+##  Task 6: Create a Data Factory Pipeline
+
+1.	Navigate to adf.azure.com
+
+2.	Under “Azure Active Directory” -> Select existing Azure AD
+
+3.	Under “Subscription” -> Select existing Azure subscription
+
+4.	Under Data Factory name -> Select the Data Factory created in Task 5
+
+5.	Click “Continue”
+
+6.	Click the Home icon
+</br><img src="./Pictures/aas16.png" width="150">
+
+7.	Click “Copy data”
+</br><img src="./Pictures/aas17.png" width="400">
+
+8.	Under “Properties”
+
+    a.	Under “Task Name” -> Enter a name for the task
+    
+    b.	Under “Task cadence or task schedule” -> Select “Run once now”
+    
+    c.	Click “Next”
+    
+9.	Under “Source”
+
+    a.	Select “Azure”
+    
+    b.	Select “+ Create new connection”
+    </br><img src="./Pictures/aas18.png" width="400">
+    
+    c.	Select “Azure Blob Storage”
+    
+    d.	Click “Continue
+    </br><img src="./Pictures/aas19.png" width="300">
+    
+    e.	Under “Name” -> Enter a name for the connection
+    
+        i.	Under “Account selection method” -> Select “From Azure Subscription”
+        
+        ii.	Under “Azure subscription” -> Select existing Azure subscription
+        
+        iii.	Under “Storage account name” -> Select the storage account created in Task 4
+        
+        iv.	Note: Leave all other fields as the default
+        
+        v.	Click “Create”
+        
+    f.	Click “Next”
+    
+    g.	Under “File or folder” -> Click “Browse”
+    
+    h.	Double click the container you created in Task 4
+    
+    i.	Select “SampleCustomerData.csv”
+    
+    j.	Click “Choose”
+    
+    k.	Note: Keep all other fields as the default
+    
+    l.	Click “Next”
+    
+    m.	Verify the schema under “Preview” and click “Next”
+
+
 
 
     
