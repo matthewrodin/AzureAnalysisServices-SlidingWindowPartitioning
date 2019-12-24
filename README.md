@@ -11,7 +11,7 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
 </br>
 </br>
 
-### What is sliding window partitioning?
+### What technologies are used?
 * **Azure SQL Data Warehouse** (To store structured data)
 
     * A data warehouse is designed to take data from multiple systems, prepare the data for a specific reporting purpose and house and structure the data, ready for querying
