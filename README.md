@@ -336,7 +336,7 @@ Deployment may take up to 20 minutes.
     
     c.	Select “Azure Blob Storage”
     
-    d.	Click “Continue
+    d.	Click “Continue"
     </br><img src="./Pictures/aas19.png" width="400">
     
     e.	Under “Name” -> Enter a name for the connection
