@@ -133,7 +133,7 @@ Deployment may take up to 20 minutes.
 </br>
 
 ##  Task 3: Prepare SQL Data Warehouse for Data Ingestion
-1. Open **Command Prompt**
+1. Open **Command Prompt** (Run as Administator)
 
 
 2. Run the following command:
