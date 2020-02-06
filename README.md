@@ -450,12 +450,9 @@ Repeat Steps 1 to 13 of Task 6 for “SampleSalesData.csv”.
     e.	Click “Connect”
 
 </br>
-In the “Object Explorer” pane, under 
-</br>
+In the “Object Explorer” pane, under
 
-*ServerName.database.windows.net -> "Databases" -> SQLDataWarehouseName -> "Tables"*
-
-</br>
+*ServerName.database.windows.net -> "Databases" -> SQLDataWarehouseName -> "Tables"* </br>
 the two tables created in Task 3 should appear.
 </br><img src="./Pictures/aas25.png" width="250">
 
@@ -965,7 +962,8 @@ The partitions created by the script should be visible.
 
 ##  Task 14: Connect to Azure Analysis Services from Power BI
 
-1.	Open **Power BI Desktop**. If Power BI Desktop is not currently installed, it can be using the following link: [PowerBI](https://powerbi.microsoft.com/en-us/downloads/)
+1.	Open **Power BI Desktop**. 
+If Power BI Desktop is not currently installed, it can be using the following link: [PowerBI](https://powerbi.microsoft.com/en-us/downloads/)
 
 2.	Click “Get data”
 </br><img src="./Pictures/aas67.png" width="200">
