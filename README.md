@@ -6,7 +6,7 @@ In this article, we will explore how to implement sliding window partitioning to
 
 The following is a diagram of the solution we will be implementing:
 </br>
-</br><img src="./Pictures/aas0.PNG" width="600">
+</br><img src="./Pictures/aas0.PNG" width="800">
 </br>
 </br>
 
@@ -15,7 +15,7 @@ The following is a diagram of the solution we will be implementing:
 
 The following graphic shows the process of designing a data warehouse:
 </br>
-</br><img src="./Pictures/aas0_3.PNG" width="800">
+</br><img src="./Pictures/aas0_3.PNG" width="600">
 </br>
 </br>
 
@@ -106,10 +106,10 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
 1.  Navigate to: [Azure Portal](https://portal.azure.com/)
 
 2.  In the search bar, type “synapse” and select “Azure Synapse Analytics (formerly SQL DW)"
-</br><img src="./Pictures/aas1_0.png" width="400">
+</br><img src="./Pictures/aas1_0.PNG" width="400">
 
 3.  On the top left, click “+ Add”
-</br><img src="./Pictures/aas2_0.png" width="400">
+</br><img src="./Pictures/aas2_0.PNG" width="400">
 
     a.  Under “Subscription” -> Select existing Azure subscription 
     
