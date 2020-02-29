@@ -4,6 +4,21 @@ In this article, we will explore how to implement sliding window partitioning to
 </br>
 </br>
 
+The following is a diagram of the solution we will be implementing:
+</br>
+</br><img src="./Pictures/aas0.png" width="300">
+</br>
+</br>
+
+### What is data warehousing?
+**Data warehousing** is the process of collecting and managing data from varied sources to provide meaningful business insights. It is typically used to connect and analyze business data from heterogeneours sources. The data warehouse is the core of the BI system, which is built for data analysis and reporting. 
+
+The following graphic shows the process of designing a data warehouse:
+</br>
+</br><img src="./Pictures/aas0_3.png" width="300">
+</br>
+</br>
+
 ### What is sliding window partitioning?
 Essentially, the sliding window partitioning strategy involved maintaining a fixed number of partitions for a certain table based on a date field. When new data is consumed, a new partition is added to the table, while the oldest partition is merged with a large partition of historical data. 
 
@@ -12,23 +27,23 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
 </br>
 
 ### What technologies are used?
-* **Azure SQL Data Warehouse** (To store structured data)
+* **Azure Synapse Analytics** - Formerly Azure SQL Data Warehouse (To store structured data)
 
-    * A data warehouse is designed to take data from multiple systems, prepare the data for a specific reporting purpose and house and structure the data, ready for querying
+    * A limitless analytics service that brings together enterprise data warehousing and Big Data analytics
     
-    * Designed for business intelligence and analytics
+    * Provides the freedom to query data on one's terms, using either severless on-demand or provisioned resources - at scale
     
-    * Data is first prepared and then stored in relation tables. This reduces storage costs, and improves query performance
+    * Unified experiece to ingest, prepare, manage and serve data for immediate business intelligence and machine learning needs
     
-    **Note:** Azure SQL Data Warehouse will soon be replaced by [Azure Synapse](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)
 </br>
 
 * **Azure Blob Storage** (To store raw data files)
     * Azure Blob storage is Microsoft's object storage solution for the cloud.
     
-    * Blob storage is optimized for storing massive amounts of unstructured data.
+    * Blob storage is optimized for storing massive amounts of unstructured data
     
     * Blob storage offers three types of resources:
+    </br>
     </br><img src="./Pictures/aas0_1.png" width="300">
 </br>
  
@@ -60,6 +75,7 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
 * **Azure Analysis Services** (To store our tabular model in the cloud)
 
     * Fully managed platform as a service (PaaS) that provides enterprise-grade data models in the cloud. 
+    </br>
     </br><img src="./Pictures/aas0_2.PNG" width="650">
     
 </br>
@@ -85,21 +101,21 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
 2.  Download “SampleCustomerData.csv” and “SampleSalesData.csv” to a local machine
 </br>
 
-##  Task 2: Create Azure SQL Data Warehouse
+##  Task 2: Create Azure Synapse Analytics
 
 1.  Navigate to: [Azure Portal](https://portal.azure.com/)
 
-2.  In the search bar, type “sql” and select “SQL data warehouses
-</br><img src="./Pictures/aas1.png" width="400">
+2.  In the search bar, type “synapse” and select “Azure Synapse Analytics (formerly SQL DW)"
+</br><img src="./Pictures/aas1_0.png" width="400">
 
 3.  On the top left, click “+ Add”
-</br><img src="./Pictures/aas2.png" width="400">
+</br><img src="./Pictures/aas2_0.png" width="400">
 
     a.  Under “Subscription” -> Select existing Azure subscription 
     
     b.  Under “Resource group” -> Click “Create New” -> Enter a name for the resource group
     
-    c.  Under “Data Warehouse name” -> Enter a name for the data warehouse
+    c.  Under “SQL pool name” -> Enter a name for the SQL pool
     
     d.  Under “Server” -> Click “Create New” 
     
@@ -132,13 +148,13 @@ Deployment may take up to 20 minutes.
 </br>
 </br>
 
-##  Task 3: Prepare SQL Data Warehouse for Data Ingestion
+##  Task 3: Prepare Synapse SQL Pool (Data Warehouse) for Data Ingestion
 1. Open **Command Prompt** (Run as Administator)
 
 
 2. Run the following command:
 `sqlcmd -S <servername> -d <databasename> -U <serverusername> -P <serverpassword> -I`
-**Note:** The ServerName can be found in the “Overview” window of the SQL Data Warehouse resource in the Azure portal.
+**Note:** The ServerName can be found in the “Overview” window of the Synapse SQL Pool resource in the Azure portal.
 3. If the following error is received: *“Sqlcmd: Error: Microsoft ODBC Driver 17 for SQL Server : Cannot open server…”*
     
 	a.	Copy the IP address provided in the error message
@@ -279,7 +295,7 @@ Deployment may take up to 20 minutes.
 
 1.	Navigate to [Azure Portal](https://portal.azure.com/)
 
-2.	In the search bar, type “data factory” and select “SQL data warehouses”
+2.	In the search bar, type “data factory” and select “Data factories”
 </br><img src="./Pictures/aas14.png" width="200">
 
 3.	Click “+ Add”
@@ -452,7 +468,7 @@ Repeat Steps 1 to 13 of Task 6 for “SampleSalesData.csv”.
 </br>
 In the “Object Explorer” pane, under
 
-*ServerName.database.windows.net -> "Databases" -> SQLDataWarehouseName -> "Tables"* </br>
+*ServerName.database.windows.net -> "Databases" -> AzureSynapseAnalyticsName -> "Tables"* </br>
 the two tables created in Task 3 should appear.
 </br><img src="./Pictures/aas25.png" width="250">
 
@@ -860,27 +876,27 @@ The two tables created in Task 3 should now be visible.
     
     </br>
     
-    b.	In line #3, replace 'Azure SQL Data Warehouse Server Name' with the name of the Azure SQL DW server name created in Task 2. 
+    b.	In line #3, replace 'Azure Synapse Analytics Server Name' with the name of the Azure Synapse Analytics server name created in Task 2. 
     
     The format should be the following: *ServerName.database.windows.net*
     
-    **Important:** Surround the SQL DW server name with double quotations.
+    **Important:** Surround the Azure Synapse Analytics server name server name with double quotations.
     
     </br>
     
-    c.	In line #3, replace 'Azure SQL Data Warehouse Name' with the name of the Azure SQL DW name created in Task 2, Step 3c. 
+    c.	In line #4, replace 'Azure Synapse Analytics Name' with the name of the Azure Synapse Analytics SQL pool name created in Task 2, Step 3c. 
     
-    **Important:** Surround the SQL DW name with double quotations.
+    **Important:** Surround the Azure Synapse Analytics SQL pool name with double quotations.
     
     </br>
     
-    d.	In line #4, replace 'Azure Analysis Services Model Name' with the name of the model/project created in Task 3, Part 1, Step 5. 
+    d.	In line #5, replace 'Azure Analysis Services Model Name' with the name of the model/project created in Task 3, Part 1, Step 5. 
     
     **Important:** Surround the model name with double quotations.
     
     </br>
     
-    e.	In line #5, replace 'Number of Months' with the number of months in the past for which partitions will be created. 
+    e.	In line #6, replace 'Number of Months' with the number of months in the past for which partitions will be created. 
     
     For example, if 4 is entered, the following partitions will be created:
     * 1 Months Old

@@ -1,7 +1,7 @@
 ## Merge last 2 partitions ##
 $aasserver = 'Azure Analysis Services Server Name'
-$sqldwserver = 'Azure SQL Data Warehouse Server Name'
-$sqldw = 'Azure SQL Data Warehouse Name'
+$sqldwserver = 'Azure Synapse Analytics Server Name'
+$sqldw = 'Azure Synapse Analytics Name'
 $model = 'Azure Analysis Services Model Name'
 $NumMonths = 'Number of Months'
 $_Credential = Get-AutomationPSCredential -Name "ServicePrincipal"
