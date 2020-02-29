@@ -6,7 +6,7 @@ In this article, we will explore how to implement sliding window partitioning to
 
 The following is a diagram of the solution we will be implementing:
 </br>
-</br><img src="./Pictures/aas0.PNG" width="800">
+</br><img src="./Pictures/aas0.PNG" width="900">
 </br>
 </br>
 
