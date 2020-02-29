@@ -6,7 +6,7 @@ In this article, we will explore how to implement sliding window partitioning to
 
 The following is a diagram of the solution we will be implementing:
 </br>
-</br><img src="./Pictures/aas0.PNG" width="300">
+</br><img src="./Pictures/aas0.PNG" width="600">
 </br>
 </br>
 
@@ -15,7 +15,7 @@ The following is a diagram of the solution we will be implementing:
 
 The following graphic shows the process of designing a data warehouse:
 </br>
-</br><img src="./Pictures/aas0_3.PNG" width="300">
+</br><img src="./Pictures/aas0_3.PNG" width="600">
 </br>
 </br>
 
