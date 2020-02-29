@@ -15,7 +15,7 @@ The following is a diagram of the solution we will be implementing:
 
 The following graphic shows the process of designing a data warehouse:
 </br>
-</br><img src="./Pictures/aas0_3.PNG" width="600">
+</br><img src="./Pictures/aas0_3.PNG" width="800">
 </br>
 </br>
 
@@ -43,7 +43,7 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
     * Blob storage is optimized for storing massive amounts of unstructured data
     
     * Blob storage offers three types of resources:
-    </br>
+    
     </br><img src="./Pictures/aas0_1.png" width="300">
 </br>
  
@@ -75,7 +75,7 @@ Since in most cases data is loaded incrementally on a daily basis, we would idea
 * **Azure Analysis Services** (To store our tabular model in the cloud)
 
     * Fully managed platform as a service (PaaS) that provides enterprise-grade data models in the cloud. 
-    </br>
+    
     </br><img src="./Pictures/aas0_2.PNG" width="650">
     
 </br>
